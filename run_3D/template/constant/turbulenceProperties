@@ -9,46 +9,21 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
-    location    "0";
-    object      nut;
+    class       dictionary;
+    location    "constant";
+    object      turbulenceProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -1 0 0 0 0];
+simulationType RAS;
 
-internalField   uniform 0;
-
-boundaryField
+RAS
 {
-    "(INLET|BOTTOM)"
-    {
-        type            calculated;
-        value           uniform 0;
-    }
+    RASModel        kOmegaSST;
 
-    "(OUTLET|TOP)"
-    {
-        type            calculated;
-        value           uniform 0;
-    }
+    turbulence      on;
 
-    Wing.stl
-    {
-        type            nutkWallFunction;
-        value           uniform 0;
-    }
-
-    SYMMETRY
-    {
-        type            empty;
-    }
-
-    WALL
-    {
-        type            empty;
-    }
+    printCoeffs     on;
 }
-
 
 // ************************************************************************* //

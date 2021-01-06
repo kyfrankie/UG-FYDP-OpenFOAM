@@ -6,7 +6,7 @@
 #       SLURM command or statement.
 
 
-#SBATCH -J CFD_2D #Slurm job name
+#SBATCH -J CFD_F #Slurm job name
 
 # Set the maximum runtime, uncomment if you need it
 ##SBATCH -t 48:00:00 #Maximum runtime of 48 hours
@@ -31,11 +31,11 @@ source /usr/local/setup/openfoam-4.1.sh
 # Go to the job submission directory and run your application
 cd "template" || exit
 
-AOA=("-AOA06" "-AOA07" "-AOA08" "-AOA09" "-AOA09.5" "-AOA10" "-AOA10.5" "-AOA11" "-AOA11.5" "-AOA12")
-list=("internalField  uniform (5.14566 0.54083 0.0 );")
-#list=("internalField  uniform (5.14566 0.54083 0.0 );" "internalField  uniform (5.13543 0.63055 0.0 );" "internalField  uniform (5.12365 0.72008 0.0 );" "internalField  uniform (5.11030 0.80939 0.0 );" "internalField  uniform (5.10304 0.85396 0.0 );" "internalField  uniform (5.09540 0.89846 0.0 );" "internalField  uniform (5.08736 0.94289 0.0 );" "internalField  uniform (5.07894 0.98725 0.0 );" "internalField  uniform (5.07013 1.03153 0.0 );" "internalField  uniform (5.06094 1.07574 0.0 );")
-liftDir=("liftDir           (-0.10453 0.99452 0.0 );" "liftDir           (-0.12187 0.99255 0.0 );" "liftDir           (-0.13917 0.99027 0.0 );" "liftDir           (-0.15643 0.98769 0.0 );" "liftDir           (-0.16505 0.98629 0.0 );" "liftDir           (-0.17365 0.98481 0.0 );" "liftDir           (-0.18224 0.98325 0.0 );" "liftDir           (-0.19081 0.98163 0.0 );" "liftDir           (-0.19937 0.97992 0.0 );" "liftDir           (-0.20791 0.97815 0.0 );")
-dragDir=("dragDir           (0.99452 0.10453 0.0 );" "dragDir           (0.99357 0.11320 0.0 );" "dragDir           (0.99255 0.12187 0.0 );" "dragDir           (0.99144 0.13053 0.0 );" "dragDir           (0.99027 0.13917 0.0 );" "dragDir           (0.98902 0.14781 0.0 );" "dragDir           (0.98769 0.15643 0.0 );" "dragDir           (0.98629 0.16505 0.0 );" "dragDir           (0.98481 0.17365 0.0 );" "dragDir           (0.98325 0.18224 0.0 );" "dragDir           (0.98163 0.19081 0.0 );" "dragDir           (0.97992 0.19937 0.0 );" "dragDir           (0.97815 0.20791 0.0 );")
+AOA=("-AOA3" "-AOA5" "-AOA8" "-AOA10" "-AOA12")
+list=("internalField  uniform (22.96848 1.20373 0.0 );" "internalField  uniform (22.91248 2.00458 0.0 );" "internalField  uniform (22.87400 2.40415 0.0 );" "internalField  uniform (22.77617 3.20098 0.0 );" "internalField  uniform (22.65058 3.99391 0.0 );" "internalField  uniform (22.49739 4.78197 0.0 );")
+#list=("internalField  uniform (22.99650 0.40141 0.0 );")
+liftDir=("liftDir           (-0.05234 0.99863 0.0 );" "liftDir           (-0.08716 0.99619 0.0 );" "liftDir           (-0.10453 0.99452 0.0 );" "liftDir           (-0.13917 0.99027 0.0 );" "liftDir           (-0.17365 0.98481 0.0 );" "liftDir           (-0.20791 0.97815 0.0 );")
+dragDir=("dragDir           (0.99863 0.05234 0.0 );" "dragDir           (0.99619 0.08716 0.0 );" "dragDir           (0.99452 0.10453 0.0 );" "dragDir           (0.99027 0.13917 0.0 );" "dragDir           (0.98481 0.17365 0.0 );" "dragDir           (0.97815 0.20791 0.0 );")
 
 for file in ../mesh/*
   do
@@ -45,7 +45,7 @@ for file in ../mesh/*
     rm -r processor*
     rm -r postProcessing
     rm -r logs/*/*
-    rm -r [0-9].[0-9]*
+    rm -r {1..1000} 
     rm ./*.foam
 
     name=$(basename "$file" .STL)
@@ -57,10 +57,15 @@ for file in ../mesh/*
     blockMesh 2>&1 | tee logs/mesh/blockMesh.log
     echo "RUN: surfaceFeaturesExtract"
     surfaceFeatureExtract 2>&1 | tee logs/mesh/surfaceFeatureExtract.log
+    #surfaceFeatures 2>&1 | tee logs/mesh/surfaceFeatureExtract.log
+    echo "RUN: decomposePar"
+    decomposePar 2>&1 | tee logs/mesh/decomposeMesh.log
     echo "RUN: snappyHexMesh"
-    snappyHexMesh -overwrite 2>&1 | tee logs/mesh/snappyHexMesh.log
-    extrudeMesh
-    checkMesh  -latestTime 2>&1 | tee logs/mesh/checkMesh.log
+    mpirun -np 24 snappyHexMesh -overwrite -parallel 2>&1 | tee logs/mesh/snappyHexMesh.log
+    mpirun -np 24 checkMesh -parallel -latestTime 2>&1 | tee logs/mesh/checkMesh.log
+    echo "RUN: reconstructPar"
+    reconstructParMesh -mergeTol 1e-06 -constant 2>&1 | tee logs/mesh/reconstructParMesh.log
+    rm -r processor*
 
     t=0
 
@@ -68,8 +73,8 @@ for file in ../mesh/*
       do
         rm -r postProcessing
         rm -r logs/solver/*
-        #rm -r {1..1000}
-        rm -r [0-9].[0-9]*
+        rm -r {1..1000}
+        #rm -r [0-9].[0-9]*
         rm ./*.foam
 
         echo "$u"
@@ -81,7 +86,7 @@ for file in ../mesh/*
         echo "RUN: decomposePar"
         decomposePar 2>&1 | tee logs/solver/decomposeSolver.log
         echo "RUN: simpleFoam"
-        mpirun -np 24 simpleFoam -parallel  2>&1 | tee logs/solver/pimpleFoam.log
+        mpirun -np 24 simpleFoam -parallel  2>&1 | tee logs/solver/simpleFoam.log
         mpirun -np 24 simpleFoam -parallel -postProcess -funcs "(forceCoefficient surfaceData force)" -latestTime 2>&1 | tee logs/solver/postProcess.log
         echo "RUN: reconstructPar"
         reconstructPar -latestTime 2>&1 | tee logs/solver/reconstructPar.log

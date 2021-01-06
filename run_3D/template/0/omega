@@ -9,61 +9,46 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       dictionary;
-    object      fvSolution;
+    class       volScalarField;
+    object      omega;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-solvers
+dimensions      [0 0 -1 0 0 0 0];
+
+internalField   uniform 10;
+
+boundaryField
 {
-    p
+    "(INLET|BOTTOM)"
     {
-        solver           GAMG;
-        tolerance        1e-6;
-        relTol           0.01;
-        smoother         GaussSeidel;
+        type            fixedValue;
+        value           uniform 10;
     }
 
-    "(U|k|omega)"
+    "(OUTLET|TOP)"
     {
-        solver           smoothSolver;
-        smoother         GaussSeidel;
-        tolerance        1e-8;
-        relTol           0.1;
+        type            inletOutlet;
+        inletValue      uniform 10;
+        value           uniform 10;
     }
 
+    Wing.stl
+    {
+        type            omegaWallFunction;
+        value           uniform 10;
+    }
+
+    SYMMETRY
+    {
+        type symmetryPlane;
+    }
+
+    WALL
+    {
+        type slip;
+    }
 }
 
-SIMPLE
-{
-    nNonOrthogonalCorrectors 0;
-
-    residualControl
-    {
-        p 1e-5;
-        U 1e-5;
-        "(k|epsilon|omega)" 1e-5;
-    }
-}
-
-relaxationFactors
-{
-    fields
-    {
-        p               0.3;
-    }
-    equations
-    {
-        U               0.7;
-        k               0.7;
-        omega           0.7;
-    }
-
-}
-
-cache
-{
-    grad(U);
-}
 
 // ************************************************************************* //

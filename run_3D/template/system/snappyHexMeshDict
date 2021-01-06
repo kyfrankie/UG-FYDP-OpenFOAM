@@ -36,8 +36,15 @@ geometry
     refinementBox
     {
         type searchableBox;
-        min (-0.1 -0.08 0.1);
-        max ( 1.2  0.08 0.125);
+        min (-0.1 -0.07 0.0);
+        max ( 0.3  0.07 0.4);
+    }
+
+    refinementBoxB
+    {
+        type searchableBox;
+        min (0.3 -0.15 0.0);
+        max (1.2  0.15 0.45);
     }
 
 };
@@ -78,7 +85,7 @@ castellatedMeshControls
     // Number of buffer layers between different levels.
     // 1 means normal 2:1 refinement restriction, larger means slower
     // refinement.
-    nCellsBetweenLevels  6;
+    nCellsBetweenLevels  4;
 
 
 
@@ -113,6 +120,7 @@ castellatedMeshControls
             // Surface-wise min and max refinement level
             level (6 6);
         }
+
     }
 
     // Resolve sharp angles on fridges
@@ -137,8 +145,15 @@ castellatedMeshControls
         refinementBox
         {
             mode inside;
-            levels ((1E15 4));
+            levels ((1E15 3));
         }
+
+        refinementBoxB
+        {
+            mode inside;
+            levels ((1E15 2));
+        }
+
     }
 
 
@@ -150,7 +165,7 @@ castellatedMeshControls
     // section reachable from the locationInMesh is kept.
     // NOTE: This point should never be on a face, always inside a cell, even
     // after refinement.
-    locationInMesh (0.4 0 0.1);
+    locationInMesh (0.4 0 0);
 
 
     // Whether any faceZones (as specified in the refinementSurfaces)
@@ -173,8 +188,8 @@ snapControls
     //  maximum edge length.
     tolerance 2.0;
 
-    //- Number of mesh displacement relaxation iterations.
-    nSolveIter 30;
+    //- Number of mesh displacement relaxation iterations. 30-100
+    nSolveIter 100;
 
     //- Maximum number of snapping relaxation iterations. Should stop
     //  before upon reaching a correct mesh.
@@ -184,7 +199,7 @@ snapControls
 
     // Number of feature edge snapping iterations.
     // Leave out altogether to disable.
-    nFeatureSnapIter 10;
+    nFeatureSnapIter 100;
 
     // Detect (geometric only) features by sampling the surface
     // (default=false).
@@ -214,19 +229,19 @@ addLayersControls
         {
             nSurfaceLayers 6;
         }
+
     }
 
     // Expansion factor for layer mesh
     expansionRatio 1.2;
 
-    //0.00003
-    firstLayerThickness 0.00005;
+    firstLayerThickness 0.0000115;
 
     // Minimum thickness of cell layer. If for any reason layer
     // cannot be above minThickness do not add layer.
     // Relative to undistorted size of cell outside layer.
     // See relativeSizes parameter.
-    minThickness 0.000005;
+    minThickness 0.0000001;
 
     // If points get not extruded do nGrow layers of connected faces that are
     // also not grown. This helps convergence of the layer addition process
@@ -241,8 +256,8 @@ addLayersControls
     featureAngle 150;
 
     // Maximum number of snapping relaxation iterations. Should stop
-    // before upon reaching a correct mesh.
-    nRelaxIter 5;
+    // before upon reaching a correct mesh. 5/20
+    nRelaxIter 10;
 
     // Number of smoothing iterations of surface normals 1
     nSmoothSurfaceNormals 1;
@@ -250,14 +265,14 @@ addLayersControls
     // Number of smoothing iterations of interior mesh movement direction 3
     nSmoothNormals 3;
 
-    // Smooth layer thickness over surface patches 10
+    // Smooth layer thickness over surface patches
     nSmoothThickness 10;
 
     // Stop layer growth on highly warped cells 0.5
     maxFaceThicknessRatio 0.5;
 
-    // Reduce layer growth where ratio thickness to medial
-    // distance is large 0.3
+    // Reduce layer growth where ratio thickness to medial 0.3
+    // distance is large
     maxThicknessToMedialRatio 0.3;
 
     // Angle used to pick up medial axis points
@@ -271,7 +286,7 @@ addLayersControls
     // Overall max number of layer addition iterations. The mesher will exit
     // if it reaches this number of iterations; possibly with an illegal
     // mesh.
-    nLayerIter 50;
+    nLayerIter 150;
 }
 
 

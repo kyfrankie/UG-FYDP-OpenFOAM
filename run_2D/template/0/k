@@ -16,27 +16,27 @@ FoamFile
 
 dimensions      [0 2 -2 0 0 0 0];
 
-internalField   uniform 0;
+internalField   uniform 0.0001;
 
 boundaryField
 {
     "(INLET|BOTTOM)"
     {
         type            fixedValue;
-        value           uniform 0;
+        value           $internalField;
     }
 
     "(OUTLET|TOP)"
     {
         type            inletOutlet;
-        inletValue      uniform 0;
-        value           uniform 0;
+        inletValue      $internalField;
+        value           $internalField;
     }
 
     Wing.stl
     {
         type            kqRWallFunction;
-        value           uniform 0;
+        value           $internalField;
     }
 
     SYMMETRY

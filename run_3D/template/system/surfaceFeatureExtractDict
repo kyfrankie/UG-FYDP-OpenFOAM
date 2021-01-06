@@ -9,46 +9,21 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
-    location    "0";
-    object      nut;
+    class       dictionary;
+    object      surfaceFeatureExtractDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -1 0 0 0 0];
-
-internalField   uniform 0;
-
-boundaryField
+Wing.stl
 {
-    "(INLET|BOTTOM)"
+    extractionMethod    extractFromSurface;
+
+    extractFromSurfaceCoeffs
     {
-        type            calculated;
-        value           uniform 0;
+        includedAngle   160;
     }
 
-    "(OUTLET|TOP)"
-    {
-        type            calculated;
-        value           uniform 0;
-    }
-
-    Wing.stl
-    {
-        type            nutkWallFunction;
-        value           uniform 0;
-    }
-
-    SYMMETRY
-    {
-        type            empty;
-    }
-
-    WALL
-    {
-        type            empty;
-    }
+    writeObj                yes;
 }
-
 
 // ************************************************************************* //
