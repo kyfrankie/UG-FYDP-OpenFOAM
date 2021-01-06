@@ -80,9 +80,9 @@ for file in ../mesh/*
 
         echo "RUN: decomposePar"
         decomposePar 2>&1 | tee logs/solver/decomposeSolver.log
-        echo "RUN: simpleFoam"
-        mpirun -np 24 simpleFoam -parallel  2>&1 | tee logs/solver/pimpleFoam.log
-        mpirun -np 24 simpleFoam -parallel -postProcess -funcs "(forceCoefficient surfaceData force)" -latestTime 2>&1 | tee logs/solver/postProcess.log
+        echo "RUN: pimpleFoam"
+        mpirun -np 24 pimpleFoam -parallel  2>&1 | tee logs/solver/pimpleFoam.log
+        mpirun -np 24 pimpleFoam -parallel -postProcess -funcs "(forceCoefficient surfaceData force)" -latestTime 2>&1 | tee logs/solver/postProcess.log
         echo "RUN: reconstructPar"
         reconstructPar -latestTime 2>&1 | tee logs/solver/reconstructPar.log
         rm -r processor*
