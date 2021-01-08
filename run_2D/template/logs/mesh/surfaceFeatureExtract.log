@@ -1,1 +1,85 @@
-run.sh: line 59: surfaceFeatureExtract: command not found
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  v2006                                 |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _b45f8f6f58-20200629 OPENFOAM=2006
+Arch   : "LSB;label=32;scalar=64"
+Exec   : surfaceFeatureExtract
+Date   : Jan 06 2021
+Time   : 22:24:25
+Host   : DESKTOP-1H96F7Q
+PID    : 4770
+I/O    : uncollated
+Case   : /home/kyfrankie/FYDP-CFD/run_2D/template
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+
+Note: Feature line extraction only valid on closed manifold surfaces
+
+Reading surfaceFeatureExtractDict
+
+Surfaces     : Wing.stl
+Output       : Wing
+Load options : offset
+Write options: writeObj=yes writeVTK=off
+
+Statistics:
+Triangles    : 2148 in 1 region(s)
+Vertices     : 1076
+Bounding Box : (-0.037500001 -0.00065695459 0) (0.1124988 0.01179607 0.75)
+
+Constructing feature set from included angle 160
+Selecting edges based purely on geometric tests: no
+
+Initial Feature set:
+    points : 4
+    edges  : 1078
+    of which
+        region edges   : 0
+        external edges : 1078
+        internal edges : 0
+
+Final Feature set:
+    points : 1076
+    of which
+        convex             : 4
+        concave            : 0
+        mixed              : 0
+        non-feature        : 1072
+    edges  : 1078
+    of which
+        external edges     : 1078
+        internal edges     : 0
+        flat edges         : 0
+        open edges         : 0
+        multiply connected : 0
+
+Writing extendedFeatureEdgeMesh to "/home/kyfrankie/FYDP-CFD/run_2D/template/constant/extendedFeatureEdgeMesh/Wing.extendedFeatureEdgeMesh"
+
+Writing extendedEdgeMesh components to "/home/kyfrankie/FYDP-CFD/run_2D/template/constant/extendedFeatureEdgeMesh/Wing"
+Writing 4 convex feature points to "/home/kyfrankie/FYDP-CFD/run_2D/template/constant/extendedFeatureEdgeMesh/Wing_convexFeaturePts.obj"
+Writing 0 concave feature points to "/home/kyfrankie/FYDP-CFD/run_2D/template/constant/extendedFeatureEdgeMesh/Wing_concaveFeaturePts.obj"
+Writing 0 mixed feature points to "/home/kyfrankie/FYDP-CFD/run_2D/template/constant/extendedFeatureEdgeMesh/Wing_mixedFeaturePts.obj"
+Writing 0 mixed feature point structure to "/home/kyfrankie/FYDP-CFD/run_2D/template/constant/extendedFeatureEdgeMesh/Wing_mixedFeaturePtsStructure.obj"
+Writing 1078 external edges to "/home/kyfrankie/FYDP-CFD/run_2D/template/constant/extendedFeatureEdgeMesh/Wing_externalEdges.obj"
+Writing 0 internal edges to "/home/kyfrankie/FYDP-CFD/run_2D/template/constant/extendedFeatureEdgeMesh/Wing_internalEdges.obj"
+Writing 0 flat edges to "/home/kyfrankie/FYDP-CFD/run_2D/template/constant/extendedFeatureEdgeMesh/Wing_flatEdges.obj"
+Writing 0 open edges to "/home/kyfrankie/FYDP-CFD/run_2D/template/constant/extendedFeatureEdgeMesh/Wing_openEdges.obj"
+Writing 0 multiple edges to "/home/kyfrankie/FYDP-CFD/run_2D/template/constant/extendedFeatureEdgeMesh/Wing_multipleEdges.obj"
+Writing 0 region edges to "/home/kyfrankie/FYDP-CFD/run_2D/template/constant/extendedFeatureEdgeMesh/Wing_regionEdges.obj"
+Writing 1078 edge directions to "/home/kyfrankie/FYDP-CFD/run_2D/template/constant/extendedFeatureEdgeMesh/Wing_edgeDirections.obj"
+
+Writing featureEdgeMesh to "/home/kyfrankie/FYDP-CFD/run_2D/template/constant/triSurface/Wing.eMesh"
+ExecutionTime = 0.02 s  ClockTime = 0 s
+
+End
+

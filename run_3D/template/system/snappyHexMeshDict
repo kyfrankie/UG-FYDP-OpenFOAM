@@ -36,15 +36,8 @@ geometry
     refinementBox
     {
         type searchableBox;
-        min (-0.1 -0.07 0.0);
-        max ( 0.3  0.07 0.4);
-    }
-
-    refinementBoxB
-    {
-        type searchableBox;
-        min (0.3 -0.15 0.0);
-        max (1.2  0.15 0.45);
+        min (-0.12 -0.15 0.0);
+        max ( 0.6   0.15 0.9);
     }
 
 };
@@ -85,7 +78,7 @@ castellatedMeshControls
     // Number of buffer layers between different levels.
     // 1 means normal 2:1 refinement restriction, larger means slower
     // refinement.
-    nCellsBetweenLevels  4;
+    nCellsBetweenLevels  6;
 
 
 
@@ -118,7 +111,7 @@ castellatedMeshControls
         Wing.stl
         {
             // Surface-wise min and max refinement level
-            level (6 6);
+            level (5 5);
         }
 
     }
@@ -143,12 +136,6 @@ castellatedMeshControls
     refinementRegions
     {
         refinementBox
-        {
-            mode inside;
-            levels ((1E15 3));
-        }
-
-        refinementBoxB
         {
             mode inside;
             levels ((1E15 2));
@@ -235,7 +222,7 @@ addLayersControls
     // Expansion factor for layer mesh
     expansionRatio 1.2;
 
-    firstLayerThickness 0.0000115;
+    firstLayerThickness 0.00005;
 
     // Minimum thickness of cell layer. If for any reason layer
     // cannot be above minThickness do not add layer.
@@ -286,7 +273,7 @@ addLayersControls
     // Overall max number of layer addition iterations. The mesher will exit
     // if it reaches this number of iterations; possibly with an illegal
     // mesh.
-    nLayerIter 150;
+    nLayerIter 50;
 }
 
 

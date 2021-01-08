@@ -78,7 +78,7 @@ boundary
 
     SYMMETRY
     {
-        type empty;
+        type symmetryPlane;
         faces
         (
             (0 3 2 1)
@@ -87,7 +87,7 @@ boundary
 
     WALL
     {
-        type empty;
+        type symmetryPlane;
         faces
         (
             (4 5 6 7)
