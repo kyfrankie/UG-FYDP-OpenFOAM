@@ -1,8 +1,8 @@
-A pimpleFoam transient **2D**/_3D(TODO)_ solver with RANS (k-omegea SST) for HKUST HPC2 cluster. The case is assumed to be with chord 15cm at RE=50,000, U=5.2 m/s.
+A pimpleFoam transient **2D**/_3D(TODO)_ solver with RANS (k-omegea SST) for HKUST HPC2 cluster. The case is assumed to be with chord 15cm at RE=50,000, U=5.174 m/s.
 
 Last updated 11/1/2021.
 
-## [run.sh](run_2D\run.sh)
+## [run.sh](run_2D/run.sh)
 A bash script to automated the CFD job capable of looping through multiple stls files stored in [mesh](run_2D\mesh) with multiple AOAs. Change the following parameters for your own job and notification.
 
     #SBATCH -J CFD_2D #Slurm job name
@@ -16,7 +16,7 @@ These defines the AOAs, flow velocity, lift/drag direction. Copy the parameters 
     dragDir=()
 
 ## Mesh
-### [BlockMesh](run_2D\template\system\blockMeshDict)
+### [BlockMesh](run_2D/template/system/blockMeshDict)
 Defines the flow field. Verticies defines the 8 rectangle corners `(x,y,z)`. blocks defines the rectangle by joining the 8 verticies `hex (0 1 2 3 4 5 6 7)` and divides into smaller cube with size x/`124` = y/`72`= z/`1`. `(124 72 1)` has to be adjusted to ensure the length of the cube is equal.
   
     vertices
@@ -35,7 +35,7 @@ Defines the flow field. Verticies defines the 8 rectangle corners `(x,y,z)`. blo
         hex (0 1 2 3 4 5 6 7) (124 72 1) simpleGrading (1 1 1)
     );
 
-### [SnappyHexMesh](run_2D\template\system\snappyHexMeshDict)
+### [SnappyHexMesh](run_2D/template/system/snappyHexMeshDict)
 Defines the mesh by providing stl file of the model. refinementBox defines the volumne of the general refinement region `(x y z)`. refinementBoxB defines the smaller highly refined volumne to resolve the flow characteristic right after trailing edge.
 
     geometry
@@ -94,14 +94,14 @@ layers define the layer additon parameters. `nSurfaceLayers` defines the number 
 
 ## Solver
 
-### [controlDict](run_2D\template\system\controlDict)
+### [controlDict](run_2D/template/system/controlDict)
 Defines the timestep and write control. `deltaT` has to be defined such that the concurrent number is <= 1. `adjustTimeStep` enable automatic time setep adjustment to `maxCo`. `functions{}` defines the run-time functions. Current set up includes `residuals` function to log the residuals.
 
     deltaT          5e-5;
     adjustTimeStep  yes;
     maxCo           1.0;
 
-### [fvSolution](run_2D\template\system\fvSolution)
+### [fvSolution](run_2D/template/system/fvSolution)
 Defines the solver types and tolerance.
 
     p
@@ -128,10 +128,10 @@ The pimpleFoam setting is also defined. `nOuterCorrectors 1` runs pimpleFoam as 
         nCorrectors     2;
     }
 
-### [fvSchemes](run_2D\template\system\fvSchemes)
+### [fvSchemes](run_2D/template/system/fvSchemes)
 Defines the parameters of the solvers.
 
-### [turbulenceProperties](run_2D\template\constant\turbulenceProperties)
+### [turbulenceProperties](run_2D/template/constant/turbulenceProperties)
 Defines the turbulence model.
     RAS
     {
@@ -142,14 +142,14 @@ Defines the turbulence model.
         printCoeffs     on;
     }
 
-### [0 folder](run_2D\template\0)
+### [0 folder](run_2D/template/0)
 Defines the flow paratmers (U, p, k, omega, nut).
 
 ## Post Process
-### [PostProcess.m](result\PostProcess.m)
+### [PostProcess.m](result/PostProcess.m)
 A matlab program to plot the residuals and the flow coefficient across AOAs per stl.
 
-### [forceCoefficient]](run_2D\template\system\forceCoefficient)
+### [forceCoefficient](run_2D/template/system/forceCoefficient)
 Defines the setting to calculate the forceCoefficient. `lRef` defines the chord length, `Aref` defines the planform area S.
 
     magUInf           5.174;
