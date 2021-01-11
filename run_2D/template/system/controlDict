@@ -25,7 +25,7 @@ stopAt          endTime;
 
 endTime         0.5;
 
-deltaT          1e-5;
+deltaT          5e-5;
 
 writeControl    timeStep;
 
@@ -47,7 +47,7 @@ runTimeModifiable true;
 
 adjustTimeStep  yes;
 
-maxCo           0.9;
+maxCo           1.0;
 
 functions
 {
