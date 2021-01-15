@@ -44,7 +44,7 @@ for l = 1:N
     res = ['./result/',D{l},'/foreCoeffs.png'];
     saveas(gcf,res)
 end
-%close all
+close all
 
 %sur = dir(['./result/',d{i},'/postProcessing/surfaceData/surface/*/p*']);
 %surface = importdata([sur.folder,'/',sur.name], ' ', 2);

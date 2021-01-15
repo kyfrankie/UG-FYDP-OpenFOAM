@@ -3,7 +3,7 @@ A pimpleFoam transient **2D**/_3D(TODO)_ solver with RANS (k-omegea SST) for HKU
 Last updated 11/1/2021.
 
 ## [run.sh](run_2D/run.sh)
-A bash script to automated the CFD job capable of looping through multiple stls files stored in [mesh](run_2D\mesh) with multiple AOAs. Change the following parameters for your own job and notification.
+A bash script to automate the CFD job capable of looping through multiple stls files stored in [mesh](run_2D\mesh) with multiple AOAs. Change the following parameters for your own job and notification.
 
     #SBATCH -J CFD_2D #Slurm job name
     #SBATCH --mail-user=itsc@connect.ust.hk
