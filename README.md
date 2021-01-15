@@ -1,42 +1,69 @@
-A pimpleFoam transient **2D**/_3D(TODO)_ solver with RANS (k-omegea SST) for HKUST HPC2 cluster. The case is assumed to be with chord 15cm at RE=50,000, U=5.174 m/s.
+A pimpleFoam ([OpenFOAM 4.1](https://github.com/OpenFOAM/OpenFOAM-4.x)) transient 3D solver with RANS (k-omegea SST) for [HKUST HPC2 cluster](https://itsc.ust.hk/services/academic-teaching-support/high-performance-computing/hpc2-cluster). Suggested to [download](https://github.com/kyfrankie/FYDP-CFD/archive/pimpleFoam.zip) the code and unzip to `C:\Users\Your user name` for Windows. The case is assumed to have a chord of 15cm at RE=50,000, U=5.174 m/s.
 
-Last updated 11/1/2021.
+Last updated on 15/1/2021.
+- [Job submission](#job-submission)
+  - [Powershell](#powershell)
+  - [run.sh](#runsh)
+- [Mesh](#mesh)
+  - [BlockMesh](#blockmesh)
+  - [SnappyHexMesh](#snappyhexmesh)
+- [Solver](#solver)
+  - [controlDict](#controldict)
+  - [fvSolution](#fvsolution)
+  - [fvSchemes](#fvschemes)
+  - [turbulenceProperties](#turbulenceproperties)
+  - [0 folder](#0-folder)
+- [Post Process](#post-process)
+  - [PostProcess.m](#postprocessm)
+  - [forceCoefficient](#forcecoefficient)
 
-## [run.sh](run_2D/run.sh)
-A bash script to automate the CFD job capable of looping through multiple stls files stored in [mesh](run_2D\mesh) with multiple AOAs. Change the following parameters for your own job and notification.
+# Job submission
+## Powershell
+You can connect to the cluster by SSH. Type following commands in windows Powershell or any terminal.
 
-    #SBATCH -J CFD_2D #Slurm job name
+1. Connect to the HKUST VPN.
+2. To upload the project folder to the cluster: `scp -rC openfoam/run itsc@hpc2.ust.hk:~/run`, where `openfoam/run` is the directory of your project folder in your local machine.
+3. To log in and access the cluster: `ssh itsc@hpc2.ust.hk`
+4. To change to project directory in the cluster: `cd run`
+5. Submit the job: `sbatch run.sh`. Monitor the job print out: `tail -f s <press tab>`
+6. To download the result file: `scp -rC itsc@hpc2.ust.hk:~/run/result/ openfoam/result`, where `openfoam/result` is the directory of your project folder in your local machine. Uncompressed with 7zip or other software.
+
+## [run.sh](run/run.sh)
+A bash script to automate the CFD job. It is capable of looping through multiple STL files stored in [mesh](run\mesh) folder with multiple AOAs. Change the following parameters for your own job and email notification.
+
+    #SBATCH -J CFD #Slurm job name
     #SBATCH --mail-user=itsc@connect.ust.hk
-    #SBATCH -p general / standard
-These defines the AOAs, flow velocity, lift/drag direction. Copy the parameters from the excel.
+    #SBATCH -p general / standard #Choose one
+
+These define the AOAs, flow velocity, lift/drag direction. Copy the parameters from the excel in Teams. Syntax `=("xxx" "xxx" "xxx")`
 
     AOA=()
     list=()
     liftDir=()
     dragDir=()
 
-## Mesh
-### [BlockMesh](run_2D/template/system/blockMeshDict)
-Defines the flow field. Verticies defines the 8 rectangle corners `(x,y,z)`. blocks defines the rectangle by joining the 8 verticies `hex (0 1 2 3 4 5 6 7)` and divides into smaller cube with size x/`124` = y/`72`= z/`1`. `(124 72 1)` has to be adjusted to ensure the length of the cube is equal.
+# Mesh
+## [BlockMesh](run/template/system/blockMeshDict)
+Defines the flow field. Vertices defines the 8 rectangle corners `(x,y,z)`. Blocks defines the rectangle by joining the 8 vertices `hex (0 1 2 3 4 5 6 7)` and divides into smaller cube with size of 0.1m which is calculated to be `... (4.5/0.1 3/0.1 0.2/0.1) simpleGrading ...` to ensure the length of the cube is equal. Extend `(x, y, 0.2)` to `(x, y, 1.0)` for a full-span wing.
   
     vertices
     (
-        (-0.6 -0.9 0.1)
-        ( 2.5 -0.9 0.1)
-        ( 2.5  0.9 0.1)
-        (-0.6  0.9 0.1)
-        (-0.6 -0.9 0.125)
-        ( 2.5 -0.9 0.125)
-        ( 2.5  0.9 0.125)
-        (-0.6  0.9 0.125)
+        (-1.5 -1.5 0)
+        ( 3.0 -1.5 0)
+        ( 3.0  1.5 0)
+        (-1.5  1.5 0)
+        (-1.5 -1.5 0.2)
+        ( 3.0 -1.5 0.2)
+        ( 3.0  1.5 0.2)
+        (-1.5  1.5 0.2)
     );
     blocks
     (
         hex (0 1 2 3 4 5 6 7) (124 72 1) simpleGrading (1 1 1)
     );
 
-### [SnappyHexMesh](run_2D/template/system/snappyHexMeshDict)
-Defines the mesh by providing stl file of the model. refinementBox defines the volumne of the general refinement region `(x y z)`. refinementBoxB defines the smaller highly refined volumne to resolve the flow characteristic right after trailing edge.
+## [SnappyHexMesh](run/template/system/snappyHexMeshDict)
+Defines the mesh by providing a STL file of the model. `refinementBox` defines the volume of the general refinement region `(x y z)`. refinementBoxB defines the smaller highly refined volume to resolve the flow characteristic right after trailing edge.
 
     geometry
     {
@@ -44,28 +71,30 @@ Defines the mesh by providing stl file of the model. refinementBox defines the v
         {
             type    triSurfaceMesh;
         }
-        refinementBox
+        refinementBoxA
         {
             type searchableBox;
-            min (-0.1 -0.3 0.1);
-            max ( 1.0  0.5 0.125);
+            min (-0.7 -0.6 0.0);
+            max ( 3.0  0.6 0.2);
         }
+
         refinementBoxB
         {
             type searchableBox;
-            min ( 0.0 -0.005 0.1);
-            max ( 0.4  0.025 0.125);
+            min (-0.1 -0.1 0.0);
+            max ( 0.3  0.1 0.2);
         }
     };
-refinementsurfaces define the refinement at the surface the the geometry. `(min max)` defines the minimum and maximum refinement level based on the `resolveFeatureAngle` . refinementRegions define the refinement within the region `levels ((1E15 R))` where r present the refinment level wanted.
+
+`refinementsurfaces` defines the refinement at the surface of the wing geometry. `(min max)` defines the minimum and maximum refinement level based on the `resolveFeatureAngle`. `refinementRegions` define the refinement within the region as `levels ((1E15 R))` where R present the refinement level wanted.
 
     refinementSurfaces
+    {
+        Wing.stl
         {
-            Wing.stl
-            {
-                level (5 5);
-            }
+            level (6 6);
         }
+    }
     refinementRegions
     {
         refinementBox
@@ -77,49 +106,52 @@ refinementsurfaces define the refinement at the surface the the geometry. `(min 
         refinementBoxB
         {
             mode inside;
-            levels ((1E15 4));
+            levels ((1E15 5));
         }
     }
-layers define the layer additon parameters. `nSurfaceLayers` defines the number of layer to be added (suggested to be 6-10). `ecpansionratio` defines the expansion of layer thickness while `firstLayerThickness` defines the thickness of the first layer. For k-omega SST model, the `firstLayerThickness` has to be set such that y+ ~= 1. [y+calculator](https://www.pointwise.com/yplus/)
+`layers` define the layer addition parameters. `nSurfaceLayers` defines the number of layer to be added (suggested to be ~6). `expansionRatio` defines the expansion of layer thickness while `firstLayerThickness` defines the thickness of the first layer. For k-omega SST model, the `firstLayerThickness` has to be set such that y+ ~= 1 referencing a [y+calculator](https://www.pointwise.com/yplus/).
 
-     layers
+    layers
     {
         Wing.stl
         {
-            nSurfaceLayers 10;
+            nSurfaceLayers 6;
         }
     }
-    expansionRatio 1.2;
+    expansionRatio 1.3;
     firstLayerThickness 0.00005;
 
-## Solver
+# Solver
+## [controlDict](run/template/system/controlDict)
+Defines the timeStep and write control. `deltaT` has to be defined such that the concurrent number is <= 1. `adjustTimeStep` enable automatic time step adjustment to `maxCo`. `functions{}` defines the run-time functions. Current set up includes `residuals` function to log the residuals.
 
-### [controlDict](run_2D/template/system/controlDict)
-Defines the timestep and write control. `deltaT` has to be defined such that the concurrent number is <= 1. `adjustTimeStep` enable automatic time setep adjustment to `maxCo`. `functions{}` defines the run-time functions. Current set up includes `residuals` function to log the residuals.
-
-    deltaT          5e-5;
+    deltaT          1e-5;
     adjustTimeStep  yes;
     maxCo           1.0;
+    functions
+    {...}
 
-### [fvSolution](run_2D/template/system/fvSolution)
+## [fvSolution](run/template/system/fvSolution)
 Defines the solver types and tolerance.
 
     p
     {
         solver           GAMG;
         tolerance        1e-6;
-        relTol           0;
+        relTol           0.01;
         smoother         GaussSeidel;
 
     }
+    ...
     "(U|k|omega)"
     {
         solver          smoothSolver;
         smoother        symGaussSeidel;
         tolerance       1e-08;
-        relTol          0;
+        relTol          0.01;
     }
-The pimpleFoam setting is also defined. `nOuterCorrectors 1` runs pimpleFoam as piso algorithm only.
+    ...
+The pimpleFoam setting is also defined. `nOuterCorrectors 1` makes pimpleFoam as piso algorithm only.
 
     PIMPLE
     {
@@ -128,11 +160,12 @@ The pimpleFoam setting is also defined. `nOuterCorrectors 1` runs pimpleFoam as 
         nCorrectors     2;
     }
 
-### [fvSchemes](run_2D/template/system/fvSchemes)
-Defines the parameters of the solvers.
+## [fvSchemes](run/template/system/fvSchemes)
+Defines the parameters of the solvers. Referencing [wingMotion2D_pimpleFoam tutorial](https://develop.openfoam.com/Development/openfoam/-/blob/master/tutorials/incompressible/pimpleFoam/RAS/wingMotion/wingMotion2D_pimpleFoam/system/fvSchemes) and [http://www.wolfdynamics.com/wiki/fvm_crash_intro.pdf](http://www.wolfdynamics.com/wiki/fvm_crash_intro.pdf). 
 
-### [turbulenceProperties](run_2D/template/constant/turbulenceProperties)
+## [turbulenceProperties](run/template/constant/turbulenceProperties)
 Defines the turbulence model.
+
     RAS
     {
         RASModel        kOmegaSST;
@@ -142,15 +175,15 @@ Defines the turbulence model.
         printCoeffs     on;
     }
 
-### [0 folder](run_2D/template/0)
-Defines the flow paratmers (U, p, k, omega, nut).
+## [0 folder](run/template/0)
+Defines the flow parameters (U, p, k, omega, nut).
 
-## Post Process
-### [PostProcess.m](result/PostProcess.m)
-A matlab program to plot the residuals and the flow coefficient across AOAs per stl.
+# Post Process
+## [PostProcess.m](result/PostProcess.m)
+A matlab program to plot the residuals and the flow coefficients across multiple AOAs per STL.
 
-### [forceCoefficient](run_2D/template/system/forceCoefficient)
-Defines the setting to calculate the forceCoefficient. `lRef` defines the chord length, `Aref` defines the planform area S.
+## [forceCoefficient](run/template/system/forceCoefficient)
+Defines the setting to calculate the forceCoefficient. `lRef` defines the chord length, `Aref` defines the platform area S.
 
     magUInf           5.174;
     lRef              0.15;

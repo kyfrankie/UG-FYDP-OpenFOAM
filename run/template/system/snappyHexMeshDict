@@ -36,16 +36,16 @@ geometry
     refinementBoxA
     {
         type searchableBox;
-        min (-0.7 -0.6 0.0);
-        max ( 3.0  0.6 0.2);
+        min (-1.0 -0.8 0.0);
+        max ( 3.0  0.8 0.14);
     }
 
-    refinementBoxB
-    {
-        type searchableBox;
-        min (-0.1 -0.1 0.0);
-        max ( 0.3  0.1 0.2);
-    }
+    //refinementBoxB
+    //{
+    //    type searchableBox;
+    //    min (-0.1 -0.1 0.0);
+    //    max ( 0.3  0.1 0.2);
+    //}
 
 };
 
@@ -147,11 +147,11 @@ castellatedMeshControls
             levels ((1E15 2));
         }
 
-        refinementBoxB
-        {
-            mode inside;
-            levels ((1E15 5));
-        }
+        //refinementBoxB
+        //{
+        //    mode inside;
+        //    levels ((1E15 5));
+        //}
     }
 
 
