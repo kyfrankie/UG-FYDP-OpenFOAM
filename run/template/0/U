@@ -9,18 +9,19 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
-    object      k;
+    class       volVectorField;
+    location    "0";
+    object      U;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -2 0 0 0 0];
+dimensions      [0 1 -1 0 0 0 0];
 
-internalField   uniform 0.01;
+internalField  uniform (5.06094 1.07574 0.0 );
 
 boundaryField
 {
-    "(INLET|BOTTOM)"
+   "(INLET|BOTTOM)"
     {
         type            fixedValue;
         value           $internalField;
@@ -29,24 +30,23 @@ boundaryField
     "(OUTLET|TOP)"
     {
         type            inletOutlet;
-        inletValue      $internalField;
+        inletValue      uniform (0 0 0);
         value           $internalField;
     }
 
     Wing.stl
     {
-        type            kqRWallFunction;
-        value           $internalField;
+        type            noSlip;
     }
 
     SYMMETRY
     {
-        type            empty;
+        type            symmetryPlane;
     }
 
     WALL
     {
-        type            empty;
+        type            slip;
     }
 
 }

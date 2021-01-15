@@ -23,20 +23,20 @@ boundaryField
     "(INLET|BOTTOM)"
     {
         type            fixedValue;
-        value           uniform 0.01;
+        value           $internalField;
     }
 
     "(OUTLET|TOP)"
     {
         type            inletOutlet;
-        inletValue      uniform 0.01;
-        value           uniform 0.01;
+        inletValue      $internalField;
+        value           $internalField;
     }
 
     Wing.stl
     {
         type            kqRWallFunction;
-        value           uniform 0.01;
+        value           $internalField;
     }
 
     SYMMETRY

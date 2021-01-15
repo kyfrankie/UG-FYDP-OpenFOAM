@@ -6,7 +6,7 @@
 #       SLURM command or statement.
 
 
-#SBATCH -J CFD_2D #Slurm job name
+#SBATCH -J CFD #Slurm job name
 
 # Set the maximum runtime, uncomment if you need it
 ##SBATCH -t 48:00:00 #Maximum runtime of 48 hours
@@ -27,13 +27,15 @@
 # or you can source ~/.bashrc or ~/.bash_profile
 source /usr/local/setup/openmpi-2.0.0.sh
 source /usr/local/setup/openfoam-4.1.sh
+#for local run (frankie)
+of4x
 
 # Go to the job submission directory and run your application
 cd "template" || exit
 
-AOA=("-AOA06" "-AOA11")
+AOA=("-AOA11")
 #AOA=("-AOA06" "-AOA07" "-AOA08" "-AOA09" "-AOA09.5" "-AOA10" "-AOA10.5" "-AOA11" "-AOA11.5" "-AOA12")
-list=("internalField  uniform (5.14566 0.54083 0.0 );" "internalField  uniform (5.07894 0.98725 0.0 );")
+list=("internalField  uniform (5.07894 0.98725 0.0 );")
 #list=("internalField  uniform (5.174 0.0 0.0 );")
 #list=("internalField  uniform (5.14566 0.54083 0.0 );" "internalField  uniform (5.13543 0.63055 0.0 );" "internalField  uniform (5.12365 0.72008 0.0 );" "internalField  uniform (5.11030 0.80939 0.0 );" "internalField  uniform (5.10304 0.85396 0.0 );" "internalField  uniform (5.09540 0.89846 0.0 );" "internalField  uniform (5.08736 0.94289 0.0 );" "internalField  uniform (5.07894 0.98725 0.0 );" "internalField  uniform (5.07013 1.03153 0.0 );" "internalField  uniform (5.06094 1.07574 0.0 );")
 liftDir=("liftDir           (-0.10453 0.99452 0.0 );" "liftDir           (-0.12187 0.99255 0.0 );" "liftDir           (-0.13917 0.99027 0.0 );" "liftDir           (-0.15643 0.98769 0.0 );" "liftDir           (-0.16505 0.98629 0.0 );" "liftDir           (-0.17365 0.98481 0.0 );" "liftDir           (-0.18224 0.98325 0.0 );" "liftDir           (-0.19081 0.98163 0.0 );" "liftDir           (-0.19937 0.97992 0.0 );" "liftDir           (-0.20791 0.97815 0.0 );")
@@ -59,10 +61,14 @@ for file in ../mesh/*
     blockMesh 2>&1 | tee logs/mesh/blockMesh.log
     echo "RUN: surfaceFeaturesExtract"
     surfaceFeatureExtract 2>&1 | tee logs/mesh/surfaceFeatureExtract.log
+    echo "RUN: decomposePar"
+    decomposePar 2>&1 | tee logs/mesh/decomposeMesh.log
     echo "RUN: snappyHexMesh"
-    snappyHexMesh -overwrite 2>&1 | tee logs/mesh/snappyHexMesh.log
-    extrudeMesh
-    checkMesh  -latestTime 2>&1 | tee logs/mesh/checkMesh.log
+    mpirun -np 24 snappyHexMesh -overwrite -parallel 2>&1 | tee logs/mesh/snappyHexMesh.log
+    mpirun -np 24 checkMesh -parallel -latestTime 2>&1 | tee logs/mesh/checkMesh.log
+    echo "RUN: reconstructPar"
+    reconstructParMesh -mergeTol 1e-06 -constant 2>&1 | tee logs/mesh/reconstructParMesh.log
+    rm -r processor*
 
     t=0
 
@@ -70,7 +76,6 @@ for file in ../mesh/*
       do
         rm -r postProcessing
         rm -r logs/solver/*
-        #rm -r {1..1000}
         rm -r [0-9].[0-9]*
         rm ./*.foam
 
