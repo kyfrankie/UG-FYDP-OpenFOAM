@@ -27,11 +27,11 @@ endTime         1.0;
 
 deltaT          1e-5;
 
-writeControl    timeStep;
+writeControl    adjustableRunTime;
 
-writeInterval   200;
+writeInterval   0.01;
 
-purgeWrite      2;
+purgeWrite      10;
 
 writeFormat     ascii;
 

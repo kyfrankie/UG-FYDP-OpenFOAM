@@ -22,7 +22,7 @@ dragDir           (0.98325 0.18224 0.0 );
 CofR              (0 0 0);    // Centre of rotation for moment calculations
 pitchAxis         (0 0 1);
 magUInf           5.174;
-lRef              0.15;
-Aref              0.0075;
+lRef              0.15;       // Chord length
+Aref              0.0015;     // Platform area
 
 // ************************************************************************* //
