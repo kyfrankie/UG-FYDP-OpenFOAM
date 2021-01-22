@@ -16,7 +16,8 @@ FoamFile
 
 ddtSchemes
 {
-    default          CrankNicolson 0.7;
+    //default         Euler;
+    default         CrankNicolson 0.7;
 }
 
 gradSchemes

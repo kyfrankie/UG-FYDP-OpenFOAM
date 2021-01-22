@@ -47,6 +47,7 @@ boundaryField
     WALL
     {
         type            slip;
+        //type            symmetryPlane;
     }
 
 }

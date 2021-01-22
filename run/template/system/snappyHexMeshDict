@@ -33,25 +33,25 @@ geometry
         type    triSurfaceMesh;
     }
 
-    //refinementBoxA
-    //{
-    //    type searchableBox;
-    //    min (-1.5 -0.8 0.0);
-    //    max ( 3.0  0.8 0.2);
-    //}
-
-    refinementBoxB
+    refinementBoxA
     {
         type searchableBox;
-        min (-0.5 -0.5 0.0);
-        max ( 1.5  0.5 0.15);
+        min (-0.5 -0.9 0.0);
+        max ( 3.0  0.9 0.9);
     }
+
+    //refinementBoxB
+    //{
+    //    type searchableBox;
+    //    min (-1.5 -1.5 0.0);
+    //    max ( 3.0  1.5 0.1);
+    //}
 
     //refinementBoxC
     //{
     //    type searchableBox;
-    //    min (-0.1 -0.05 0.0);
-    //    max ( 0.2  0.05 0.11);
+    //    min (-0.1 -0.1 0.0);
+    //    max ( 0.3  0.1 0.2);
     //}
 
 };
@@ -148,17 +148,17 @@ castellatedMeshControls
 
     refinementRegions
     {
-        //refinementBoxA
-        //{
-        //    mode inside;
-        //    levels ((1E15 1));
-        //}
-
-        refinementBoxB
+        refinementBoxA
         {
             mode inside;
             levels ((1E15 2));
         }
+
+        //refinementBoxB
+        //{
+        //    mode inside;
+        //    levels ((1E15 1));
+        //}
 
         //refinementBoxC
         //{
@@ -238,7 +238,7 @@ addLayersControls
     {
         Wing.stl
         {
-            nSurfaceLayers 8;
+            nSurfaceLayers 6;
         }
     }
 

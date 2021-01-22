@@ -34,11 +34,14 @@ of4x
 cd "template" || exit
 
 AOA=("-AOA12")
-#AOA=("-AOA9" "-AOA10" "-AOA11" "-AOA12" "-AOA13")
 list=("internalField  uniform (5.06094 1.07574 0.0 );")
+liftDir=("liftDir           (-0.20791 0.97815 0.0 );")
+dragDir=("dragDir           (0.97815 0.20791 0.0 );")
+
+#AOA=("-AOA9" "-AOA10" "-AOA11" "-AOA12" "-AOA13")
 #list=("internalField  uniform (5.11030 0.80939 0.0 );" "internalField  uniform (5.09540 0.89846 0.0 );" "internalField  uniform (5.07894 0.98725 0.0 );" "internalField  uniform (5.06094 1.07574 0.0 );" "internalField  uniform (5.04139 1.16390 0.0 );")
-liftDir=("liftDir           (-0.15643 0.98769 0.0 );" "liftDir           (-0.17365 0.98481 0.0 );" "liftDir           (-0.19081 0.98163 0.0 );" "liftDir           (-0.20791 0.97815 0.0 );" "liftDir           (-0.22495 0.97437 0.0 );")
-dragDir=("dragDir           (0.98769 0.15643 0.0 );" "dragDir           (0.98481 0.17365 0.0 );" "dragDir           (0.98163 0.19081 0.0 );" "dragDir           (0.97815 0.20791 0.0 );" "dragDir           (0.97437 0.22495 0.0 );")
+#liftDir=("liftDir           (-0.15643 0.98769 0.0 );" "liftDir           (-0.17365 0.98481 0.0 );" "liftDir           (-0.19081 0.98163 0.0 );" "liftDir           (-0.20791 0.97815 0.0 );" "liftDir           (-0.22495 0.97437 0.0 );")
+#dragDir=("dragDir           (0.98769 0.15643 0.0 );" "dragDir           (0.98481 0.17365 0.0 );" "dragDir           (0.98163 0.19081 0.0 );" "dragDir           (0.97815 0.20791 0.0 );" "dragDir           (0.97437 0.22495 0.0 );")
 
 for file in ../mesh/*
   do
@@ -90,7 +93,7 @@ for file in ../mesh/*
         mpirun -np 24 pimpleFoam -parallel  2>&1 | tee logs/solver/pimpleFoam.log
         mpirun -np 24 pimpleFoam -parallel -postProcess -funcs "(forceCoefficient surfaceData force)" -latestTime 2>&1 | tee logs/solver/postProcess.log
         echo "RUN: reconstructPar"
-        reconstructPar -latestTime 2>&1 | tee logs/solver/reconstructPar.log
+        reconstructPar 2>&1 | tee logs/solver/reconstructPar.log
         rm -r processor*
 
         echo "RUN: paraFoam"

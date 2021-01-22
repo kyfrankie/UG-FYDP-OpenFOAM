@@ -15,18 +15,16 @@ for l = 1:N
         residuals = residuals.data;
         t = residuals(:,1);
         figure;
-
         %for 3d case
         semilogy(t,residuals(:,2),t,residuals(:,3),t,residuals(:,4),t,residuals(:,5),t,residuals(:,6),t,residuals(:,7));
         legend('p','Ux','Uy','Uz','k','omega')
-
         %for 2d case
         %semilogy(t,residuals(:,2),t,residuals(:,3),t,residuals(:,4),t,residuals(:,5),t,residuals(:,6));
         %legend('p','Ux','Uy','k','omega')
-
         xlabel('Iterations'), ylabel('Residuals'), title(d{i})
         res = ['./result/',D{l},'/',d{i},'/Residuals.png'];
         saveas(gcf,res)
+        
         f = ['./result/',D{l},'/',d{i},'/postProcessing/forceCoefficient/0/forceCoeffs.dat'];
         fc = importdata(f);
         fc = fc.data;

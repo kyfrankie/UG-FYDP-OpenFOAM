@@ -1,6 +1,6 @@
 A pimpleFoam ([OpenFOAM 4.1](https://github.com/OpenFOAM/OpenFOAM-4.x)) transient 3D solver with RANS (k-omegea SST) for [HKUST HPC2 cluster](https://itsc.ust.hk/services/academic-teaching-support/high-performance-computing/hpc2-cluster). Suggested to [download](https://github.com/kyfrankie/FYDP-CFD/archive/pimpleFoam.zip) the code and unzip to `C:\Users\Your user name` for Windows. The case is assumed to have a chord of 15cm at RE=50,000, U=5.174 m/s.
 
-Last updated on 15/1/2021.
+Last updated on 22/1/2021.
 - [Job submission](#job-submission)
   - [Powershell](#powershell)
   - [run.sh](#runsh)
@@ -44,7 +44,7 @@ These define the AOAs, flow velocity, lift/drag direction. Copy the parameters f
 
 # Mesh
 ## [BlockMesh](run/template/system/blockMeshDict)
-Defines the flow field. Vertices defines the 8 rectangle corners `(x,y,z)`. Blocks defines the rectangle by joining the 8 vertices `hex (0 1 2 3 4 5 6 7)` and divides into smaller cube with size of 0.1m which is calculated to be `... (4.5/0.1 3/0.1 0.2/0.1) simpleGrading ...` to ensure the length of the cube is equal. Extend `(x, y, 0.2)` to `(x, y, 1.0)` for a full-span wing.
+Defines the flow field. Vertices defines the 8 rectangle corners `(x,y,z)`. Blocks defines the rectangle by joining the 8 vertices `hex (0 1 2 3 4 5 6 7)` and divides into smaller cube with size of 0.05m which is calculated to be `... (4.5/0.05 3/0.05 1.5/0.05) simpleGrading ...` to ensure the length of the cube is equal.
   
     vertices
     (
@@ -52,18 +52,18 @@ Defines the flow field. Vertices defines the 8 rectangle corners `(x,y,z)`. Bloc
         ( 3.0 -1.5 0)
         ( 3.0  1.5 0)
         (-1.5  1.5 0)
-        (-1.5 -1.5 0.2)
-        ( 3.0 -1.5 0.2)
-        ( 3.0  1.5 0.2)
-        (-1.5  1.5 0.2)
+        (-1.5 -1.5 1.5)
+        ( 3.0 -1.5 1.5)
+        ( 3.0  1.5 1.5)
+        (-1.5  1.5 1.5)
     );
     blocks
     (
-        hex (0 1 2 3 4 5 6 7) (124 72 1) simpleGrading (1 1 1)
+        hex (0 1 2 3 4 5 6 7) (90 60 30) simpleGrading (1 1 1)
     );
 
 ## [SnappyHexMesh](run/template/system/snappyHexMeshDict)
-Defines the mesh by providing a STL file of the model. `refinementBox` defines the volume of the general refinement region `(x y z)`. refinementBoxB defines the smaller highly refined volume to resolve the flow characteristic right after trailing edge.
+Defines the mesh by providing a STL file of the model. `refinementBox` defines the volume of the general refinement region `(x y z)`.
 
     geometry
     {
@@ -77,22 +77,17 @@ Defines the mesh by providing a STL file of the model. `refinementBox` defines t
             min (-0.7 -0.6 0.0);
             max ( 3.0  0.6 0.2);
         }
-
-        refinementBoxB
-        {
-            type searchableBox;
-            min (-0.1 -0.1 0.0);
-            max ( 0.3  0.1 0.2);
-        }
     };
 
-`refinementsurfaces` defines the refinement at the surface of the wing geometry. `(min max)` defines the minimum and maximum refinement level based on the `resolveFeatureAngle`. `refinementRegions` define the refinement within the region as `levels ((1E15 R))` where R present the refinement level wanted.
+`refinementsurfaces` defines the refinement at the surface of the wing geometry. `(min max)` defines the minimum and maximum refinement level based on the `resolveFeatureAngle`. 
+
+`refinementRegions` define the refinement within the region as `levels ((1E15 R))` where R present the refinement level wanted.
 
     refinementSurfaces
     {
         Wing.stl
         {
-            level (6 6);
+            level (5 5);
         }
     }
     refinementRegions
@@ -101,12 +96,6 @@ Defines the mesh by providing a STL file of the model. `refinementBox` defines t
         {
             mode inside;
             levels ((1E15 2));
-        }
-
-        refinementBoxB
-        {
-            mode inside;
-            levels ((1E15 5));
         }
     }
 `layers` define the layer addition parameters. `nSurfaceLayers` defines the number of layer to be added (suggested to be ~6). `expansionRatio` defines the expansion of layer thickness while `firstLayerThickness` defines the thickness of the first layer. For k-omega SST model, the `firstLayerThickness` has to be set such that y+ ~= 1 referencing a [y+calculator](https://www.pointwise.com/yplus/).
@@ -123,11 +112,16 @@ Defines the mesh by providing a STL file of the model. `refinementBox` defines t
 
 # Solver
 ## [controlDict](run/template/system/controlDict)
-Defines the timeStep and write control. `deltaT` has to be defined such that the concurrent number is <= 1. `adjustTimeStep` enable automatic time step adjustment to `maxCo`. `functions{}` defines the run-time functions. Current set up includes `residuals` function to log the residuals.
+Defines the timeStep and write control. `deltaT` has to be defined such that the concurrent number is <= 1. `adjustTimeStep` enable automatic time step adjustment to `maxCo`. 
+
+`purgeWrite` defines how many timeSteps are saved (suggested to be 5-10 for final result reporting. Keep as 1 only when testing for reduced file size). 
+
+`functions{}` defines the run-time functions. Current set up includes `residuals` function to log the residuals.
 
     deltaT          1e-5;
+    purgeWrite      1;
     adjustTimeStep  yes;
-    maxCo           1.0;
+    maxCo           0.9;
     functions
     {...}
 
