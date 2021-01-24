@@ -37,21 +37,14 @@ geometry
     {
         type searchableBox;
         min (-0.5 -0.9 0.0);
-        max ( 3.0  0.9 0.9);
+        max ( 3.0  0.9 1.0);
     }
 
     //refinementBoxB
     //{
     //    type searchableBox;
-    //    min (-1.5 -1.5 0.0);
-    //    max ( 3.0  1.5 0.1);
-    //}
-
-    //refinementBoxC
-    //{
-    //    type searchableBox;
-    //    min (-0.1 -0.1 0.0);
-    //    max ( 0.3  0.1 0.2);
+    //    min ( 0.1   0.00 0.0);
+    //    max ( 0.25  0.06 0.8);
     //}
 
 };
@@ -125,7 +118,7 @@ castellatedMeshControls
         Wing.stl
         {
             // Surface-wise min and max refinement level
-            level (5 5);
+            level (6 6);
         }
     }
 
@@ -155,12 +148,6 @@ castellatedMeshControls
         }
 
         //refinementBoxB
-        //{
-        //    mode inside;
-        //    levels ((1E15 1));
-        //}
-
-        //refinementBoxC
         //{
         //    mode inside;
         //    levels ((1E15 4));

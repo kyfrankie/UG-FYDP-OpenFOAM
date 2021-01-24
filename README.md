@@ -1,6 +1,9 @@
 A pimpleFoam ([OpenFOAM 4.1](https://github.com/OpenFOAM/OpenFOAM-4.x)) transient 3D solver with RANS (k-omegea SST) for [HKUST HPC2 cluster](https://itsc.ust.hk/services/academic-teaching-support/high-performance-computing/hpc2-cluster). Suggested to [download](https://github.com/kyfrankie/FYDP-CFD/archive/pimpleFoam.zip) the code and unzip to `C:\Users\Your user name` for Windows. The case is assumed to have a chord of 15cm at RE=50,000, U=5.174 m/s.
 
-Last updated on 22/1/2021.
+Last updated on 24/1/2021.
+- 24/1: Increased cell size from 0.05m to 0.1m to reduce the mesh size and computational time. Each case should finish in ~ 3 hrs.
+
+Table of Contents
 - [Job submission](#job-submission)
   - [Powershell](#powershell)
   - [run.sh](#runsh)
@@ -44,7 +47,7 @@ These define the AOAs, flow velocity, lift/drag direction. Copy the parameters f
 
 # Mesh
 ## [BlockMesh](run/template/system/blockMeshDict)
-Defines the flow field. Vertices defines the 8 rectangle corners `(x,y,z)`. Blocks defines the rectangle by joining the 8 vertices `hex (0 1 2 3 4 5 6 7)` and divides into smaller cube with size of 0.05m which is calculated to be `... (4.5/0.05 3/0.05 1.5/0.05) simpleGrading ...` to ensure the length of the cube is equal.
+Defines the flow field. Vertices defines the 8 rectangle corners `(x,y,z)`. Blocks defines the rectangle by joining the 8 vertices `hex (0 1 2 3 4 5 6 7)` and divides into smaller cube with size of 0.1m which is calculated to be `... (4.5/0.1 3/0.1 1.5/0.1) simpleGrading ...` to ensure the length of the cube is equal.
   
     vertices
     (
@@ -59,7 +62,7 @@ Defines the flow field. Vertices defines the 8 rectangle corners `(x,y,z)`. Bloc
     );
     blocks
     (
-        hex (0 1 2 3 4 5 6 7) (90 60 30) simpleGrading (1 1 1)
+        hex (0 1 2 3 4 5 6 7) (45 30 15) simpleGrading (1 1 1)
     );
 
 ## [SnappyHexMesh](run/template/system/snappyHexMeshDict)
@@ -74,8 +77,8 @@ Defines the mesh by providing a STL file of the model. `refinementBox` defines t
         refinementBoxA
         {
             type searchableBox;
-            min (-0.7 -0.6 0.0);
-            max ( 3.0  0.6 0.2);
+            min (-0.5 -0.9 0.0);
+            max ( 3.0  0.9 1.0);
         }
     };
 
@@ -87,12 +90,12 @@ Defines the mesh by providing a STL file of the model. `refinementBox` defines t
     {
         Wing.stl
         {
-            level (5 5);
+            level (6 6);
         }
     }
     refinementRegions
     {
-        refinementBox
+        refinementBoxA
         {
             mode inside;
             levels ((1E15 2));
