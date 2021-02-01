@@ -1,8 +1,10 @@
 A pimpleFoam ([OpenFOAM 4.1](https://github.com/OpenFOAM/OpenFOAM-4.x)) transient 3D solver with RANS (k-omegea SST) for [HKUST HPC2 cluster](https://itsc.ust.hk/services/academic-teaching-support/high-performance-computing/hpc2-cluster). Suggested to [download](https://github.com/kyfrankie/FYDP-CFD/archive/pimpleFoam.zip) the code and unzip to `C:\Users\Your user name` for Windows. The case is assumed to have a chord of 15cm at RE=50,000, U=5.174 m/s.
 
-Last updated on 25/1/2021.
+Last updated on 01/2/2021.
 - 24/1: Increased cell size from 0.05m to 0.1m to reduce the mesh size and computational time. Each case should finish in ~ 3 hrs.
 - 25/1: Increased flow field size in z-direction from 1.5 to 2.0 which should provide better convergence.
+- 29/1: Update MatLab PostProcess code. 
+- 01/2: Added [y+](run/template/system/yPlus) postProcess utility.
 
 Table of Contents
 - [Job submission](#job-submission)
@@ -174,11 +176,13 @@ Defines the turbulence model.
     }
 
 ## [0 folder](run/template/0)
-Defines the flow parameters (U, p, k, omega, nut).
+Defines the flow parameters (U, p, k, omega, nut). [Turbulence parameter calculators](https://www.cfd-online.com/Tools/turbulence.php)
 
 # Post Process
 ## [PostProcess.m](result/PostProcess.m)
-A matlab program to plot the residuals and the flow coefficients across multiple AOAs per STL.
+A matlab program to plot the residuals and the flow coefficients across multiple AOAs per STL. Remember to change the AOA list manually.
+
+    aoa = [2 4 6 8 10 12 14 16 18];
 
 ## [forceCoefficient](run/template/system/forceCoefficient)
 Defines the setting to calculate the forceCoefficient. `lRef` defines the chord length, `Aref` defines the platform area S.
