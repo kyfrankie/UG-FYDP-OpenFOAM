@@ -3,6 +3,8 @@ A pimpleFoam ([OpenFOAM 4.1](https://github.com/OpenFOAM/OpenFOAM-4.x)) transien
 Last updated on 25/1/2021.
 - 24/1: Increased cell size from 0.05m to 0.1m to reduce the mesh size and computational time. Each case should finish in ~ 3 hrs.
 - 25/1: Increased flow field size in z-direction from 1.5 to 2.0 which should provide better convergence.
+- 29/1: Update MatLab PostProcess code. 
+- 02/1: Added [y+](run/template/system/yPlus) postProcess utility.
 
 Table of Contents
 - [Job submission](#job-submission)
@@ -174,11 +176,13 @@ Defines the turbulence model.
     }
 
 ## [0 folder](run/template/0)
-Defines the flow parameters (U, p, k, omega, nut).
+Defines the flow parameters (U, p, k, omega, nut). [Turbulence parameter calculators](https://www.cfd-online.com/Tools/turbulence.php)
 
 # Post Process
 ## [PostProcess.m](result/PostProcess.m)
-A matlab program to plot the residuals and the flow coefficients across multiple AOAs per STL.
+A matlab program to plot the residuals and the flow coefficients across multiple AOAs per STL. Remember to change the AOA list manually.
+
+    aoa = [2 4 6 8 10 12 14 16 18];
 
 ## [forceCoefficient](run/template/system/forceCoefficient)
 Defines the setting to calculate the forceCoefficient. `lRef` defines the chord length, `Aref` defines the platform area S.

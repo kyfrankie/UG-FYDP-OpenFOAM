@@ -3,6 +3,7 @@ D = {F([F.isdir]).name};
 D = D(~ismember(D,{'.','..'}));
 N = length(D);
 forceCoeffs=[];
+aoa = [2 4 6 8 10 12 14 16 18];
 
 for l = 1:N
     f = dir(['./result/',D{l}]);
@@ -32,7 +33,6 @@ for l = 1:N
     end
     figure;
     %change this mannually
-    aoa = [2 4 6 8 10 12 14 16 18];
     yyaxis left
     plot(aoa, forceCoeffs(:,3));
     yyaxis right
