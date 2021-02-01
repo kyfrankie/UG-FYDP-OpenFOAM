@@ -17,7 +17,7 @@ FoamFile
 
 dimensions      [0 1 -1 0 0 0 0];
 
-internalField  uniform (5.06094 1.07574 0.0 );
+internalField  uniform (22.94397 1.60440 0.0 );
 
 boundaryField
 {
@@ -34,7 +34,7 @@ boundaryField
         value           $internalField;
     }
 
-    Wing.stl
+    "(Wing.stl|WingTip)"
     {
         type            noSlip;
     }

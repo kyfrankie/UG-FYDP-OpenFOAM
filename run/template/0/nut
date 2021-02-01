@@ -33,7 +33,7 @@ boundaryField
         value           uniform 0;
     }
 
-    Wing.stl
+    "(Wing.stl|WingTip)"
     {
         type            nutkWallFunction;
         value           uniform 0;
