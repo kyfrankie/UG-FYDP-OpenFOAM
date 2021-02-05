@@ -1,10 +1,11 @@
 A pimpleFoam ([OpenFOAM 4.1](https://github.com/OpenFOAM/OpenFOAM-4.x)) transient 3D solver with RANS (k-omegea SST) for [HKUST HPC2 cluster](https://itsc.ust.hk/services/academic-teaching-support/high-performance-computing/hpc2-cluster). Suggested to [download](https://github.com/kyfrankie/FYDP-CFD/archive/pimpleFoam.zip) the code and unzip to `C:\Users\Your user name` for Windows. The case is assumed to have a chord of 15cm at RE=50,000, U=5.174 m/s.
 
-Last updated on 25/1/2021.
+Last updated on 05/2/2021.
 - 24/1: Increased cell size from 0.05m to 0.1m to reduce the mesh size and computational time. Each case should finish in ~ 3 hrs.
 - 25/1: Increased flow field size in z-direction from 1.5 to 2.0 which should provide better convergence.
 - 29/1: Update MatLab PostProcess code. 
-- 02/1: Added [y+](run/template/system/yPlus) postProcess utility.
+- 01/2: Added [y+](run/template/system/yPlus) postProcess utility.
+- 05/2: Change boundary condition to freeStream and update mesh setting.
 
 Table of Contents
 - [Job submission](#job-submission)

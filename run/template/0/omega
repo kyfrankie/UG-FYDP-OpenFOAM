@@ -16,21 +16,20 @@ FoamFile
 
 dimensions      [0 0 -1 0 0 0 0];
 
-internalField   uniform 10;
+internalField   uniform 10.4;
 
 boundaryField
 {
     "(INLET|BOTTOM)"
     {
-        type            fixedValue;
-        value           $internalField;
+        type            freestream;
+        freestreamValue $internalField;
     }
 
     "(OUTLET|TOP)"
     {
-        type            inletOutlet;
-        inletValue      $internalField;
-        value           $internalField;
+        type            freestream;
+        freestreamValue $internalField;
     }
 
     Wing.stl
@@ -47,7 +46,6 @@ boundaryField
     WALL
     {
         type slip;
-        //type symmetryPlane;
     }
 }
 

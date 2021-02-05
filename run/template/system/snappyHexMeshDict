@@ -37,16 +37,15 @@ geometry
     {
         type searchableBox;
         min (-0.5 -0.9 0.0);
-        max ( 3.0  0.9 1.0);
+        max ( 3.0  0.9 0.6);
     }
 
-    //refinementBoxB
-    //{
-    //    type searchableBox;
-    //    min ( 0.1   0.00 0.0);
-    //    max ( 0.25  0.06 0.8);
-    //}
-
+    refinementBoxB
+    {
+        type searchableBox;
+        min (-0.1 -0.1 0.0);
+        max ( 0.3  0.1 0.4);
+    }
 };
 
 
@@ -123,7 +122,7 @@ castellatedMeshControls
     }
 
     // Resolve sharp angles on fridges
-    resolveFeatureAngle 5;
+    resolveFeatureAngle 10;
 
 
     // Region-wise refinement
@@ -146,12 +145,12 @@ castellatedMeshControls
             mode inside;
             levels ((1E15 2));
         }
-
-        //refinementBoxB
-        //{
-        //    mode inside;
-        //    levels ((1E15 4));
-        //}
+        
+        refinementBoxB
+        {
+            mode inside;
+            levels ((1E15 4));
+        }
     }
 
 
@@ -197,7 +196,7 @@ snapControls
 
     // Number of feature edge snapping iterations.
     // Leave out altogether to disable.
-    nFeatureSnapIter 10;
+    nFeatureSnapIter 30;
 
     // Detect (geometric only) features by sampling the surface
     // (default=false).
@@ -225,7 +224,7 @@ addLayersControls
     {
         Wing.stl
         {
-            nSurfaceLayers 6;
+            nSurfaceLayers 10;
         }
     }
 
@@ -251,7 +250,7 @@ addLayersControls
 
     // When not to extrude surface. 0 is flat surface, 90 is when two faces
     // are perpendicular
-    featureAngle 150;
+    featureAngle 180;
 
     // Maximum number of snapping relaxation iterations. Should stop
     // before upon reaching a correct mesh.
