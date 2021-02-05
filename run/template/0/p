@@ -31,7 +31,7 @@ boundaryField
         value           $internalField;
     }
 
-    "(Wing.stl|WingTip)"
+    Wing.stl
     {
         type            zeroGradient;
     }
@@ -44,7 +44,6 @@ boundaryField
     WALL
     {
         type            slip;
-        //type            symmetryPlane;
     }
 }
 

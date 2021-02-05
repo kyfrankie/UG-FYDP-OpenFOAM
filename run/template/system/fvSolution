@@ -50,7 +50,7 @@ PIMPLE
 {
     nOuterCorrectors 1;
     nCorrectors     2;
-    nNonOrthogonalCorrectors 3;
+    nNonOrthogonalCorrectors 2;
 }
 
 relaxationFactors

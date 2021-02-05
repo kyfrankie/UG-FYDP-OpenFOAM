@@ -21,17 +21,16 @@ internalField  uniform (22.94397 1.60440 0.0 );
 
 boundaryField
 {
-   "(INLET|BOTTOM)"
+    "(INLET|BOTTOM)"
     {
-        type            fixedValue;
-        value           $internalField;
+        type            freestream;
+        freestreamValue $internalField;
     }
 
     "(OUTLET|TOP)"
     {
-        type            inletOutlet;
-        inletValue      uniform (0 0 0);
-        value           $internalField;
+        type            freestream;
+        freestreamValue $internalField;
     }
 
     "(Wing.stl|WingTip)"
@@ -47,7 +46,6 @@ boundaryField
     WALL
     {
         type            slip;
-        //type            symmetryPlane;
     }
 
 }

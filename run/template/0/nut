@@ -48,7 +48,6 @@ boundaryField
     {
         type            calculated;
         value           uniform 0;
-        //type            symmetryPlane;
     }
 }
 
