@@ -224,15 +224,15 @@ addLayersControls
     {
         Wing.stl
         {
-            nSurfaceLayers 10;
+            nSurfaceLayers 6;
         }
     }
 
     // Expansion factor for layer mesh
-    expansionRatio 1.3;
+    expansionRatio 1.2;
 
     //0.00003
-    firstLayerThickness 0.00005;
+    firstLayerThickness 0.0003;
 
     // Minimum thickness of cell layer. If for any reason layer
     // cannot be above minThickness do not add layer.
