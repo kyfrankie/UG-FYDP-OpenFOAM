@@ -1,0 +1,27 @@
+	For NACA case:
+
+##General flow settings (updated on Feb 2021)
+	For Re 200000, and U_inf = 23.0 m/s
+dynamic viscosity is 1.856e-05 Pa s (source: EngineeringToolBox with 25 deg C)
+the kinematic viscosity is 1.5589e-05 m^2 /s, meaning the rho is 1.191 kg/m^3
+*kinematic viscosity is inputted into the ```constant/transportProperties``` as well
+
+Stagnation/Dynamic pressure should be 315 Pa
+
+##Wing information
+
+area is around 
+0.0421875 m^2 for base wing
+0.04554504 m^2 for tipped wing
+
+MAC is
+0.135556 m
+
+##Mesh information
+Y+ 30
+mainwing FLT = 0.0004
+wingtip FLT = 0.00033
+
+Y+ 39
+mainwing FLT = 0.00052
+wingtip FLT = 0.00042
