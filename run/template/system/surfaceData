@@ -15,7 +15,17 @@ log                 yes;
 writeFields         true;
 surfaceFormat       raw;
 regionType          patch;
-name                Wing.stl;
+name                wing_surface;
+operation           none;
+fields              ( p U );
+
+type                surfaceRegion;
+libs                ("libfieldFunctionObjects.so");
+log                 yes;
+writeFields         true;
+surfaceFormat       raw;
+regionType          patch;
+name                wing_tip;
 operation           none;
 fields              ( p U );
 

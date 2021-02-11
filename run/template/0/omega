@@ -1,9 +1,9 @@
 /*--------------------------------*- C++ -*----------------------------------*\
-  =========                 |
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  8
-     \\/     M anipulation  |
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
@@ -16,37 +16,27 @@ FoamFile
 
 dimensions      [0 0 -1 0 0 0 0];
 
-internalField   uniform 10.4;
+internalField   uniform 127.25;
 
 boundaryField
 {
-    "(INLET|BOTTOM)"
+    "(outlet|inlet|far_side)"
     {
         type            freestream;
         freestreamValue $internalField;
     }
 
-    "(OUTLET|TOP)"
-    {
-        type            freestream;
-        freestreamValue $internalField;
-    }
-
-    "(Wing.stl|WingTip)"
+    "(wing_surface|wing_tip)"
     {
         type            omegaWallFunction;
         value           $internalField;
     }
 
-    SYMMETRY
+    near_side
     {
-        type symmetryPlane;
+        type            symmetryPlane;
     }
 
-    WALL
-    {
-        type slip;
-    }
 }
 
 
