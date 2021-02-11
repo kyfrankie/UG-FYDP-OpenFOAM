@@ -19,7 +19,7 @@ rho               rhoInf;      // Indicates incompressible
 rhoInf            100000;      // Redundant for incompressible
 liftDir           (-0.06976 0.99756 0.0 );
 dragDir           (0.99756 0.06976 0.0 );
-CofR              (0 0 0);    // Centre of rotation for moment calculations
+CofR              (0.0375 0 0);    // Centre of rotation for moment calculations
 pitchAxis         (0 0 1);
 magUInf           23;
 lRef              0.135;       // Chord length

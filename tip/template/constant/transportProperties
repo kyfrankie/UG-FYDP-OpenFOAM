@@ -10,20 +10,13 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    object      surfaceFeatureExtractDict;
+    object      transportProperties;
 }
+
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-Wing.stl
-{
-    extractionMethod    extractFromSurface;
+transportModel Newtonian;
 
-    extractFromSurfaceCoeffs
-    {
-        includedAngle   160;
-    }
-
-    writeObj                yes;
-}
+nu              [0 2 -1 0 0 0 0] 1.562e-05;
 
 // ************************************************************************* //

@@ -10,44 +10,42 @@ FoamFile
     version     2.0;
     format      ascii;
     class       volScalarField;
-    location    "0";
-    object      nut;
+    object      omega;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -1 0 0 0 0];
+dimensions      [0 0 -1 0 0 0 0];
 
-internalField   uniform 0;
+internalField   uniform 10.4;
 
 boundaryField
 {
     "(INLET|BOTTOM)"
     {
-        type            calculated;
-        value           uniform 0;
+        type            freestream;
+        freestreamValue $internalField;
     }
 
     "(OUTLET|TOP)"
     {
-        type            calculated;
-        value           uniform 0;
+        type            freestream;
+        freestreamValue $internalField;
     }
 
-    "(Wing.stl|WingTip)"
+    "(Wing.stl|Tips.stl)"
     {
-        type            nutkWallFunction;
-        value           uniform 0;
+        type            omegaWallFunction;
+        value           $internalField;
     }
 
     SYMMETRY
     {
-        type            symmetryPlane;
+        type symmetryPlane;
     }
 
     WALL
     {
-        type            calculated;
-        value           uniform 0;
+        type slip;
     }
 }
 

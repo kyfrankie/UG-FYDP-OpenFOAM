@@ -9,31 +9,33 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
-    object      p;
+    class       volVectorField;
+    location    "0";
+    object      U;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -2 0 0 0 0];
+dimensions      [0 1 -1 0 0 0 0];
 
-internalField   uniform 0;
+internalField  uniform (22.94397 1.60440 0.0 );
 
 boundaryField
 {
     "(INLET|BOTTOM)"
     {
-        type            zeroGradient;
+        type            freestream;
+        freestreamValue $internalField;
     }
 
     "(OUTLET|TOP)"
     {
-        type            fixedValue;
-        value           $internalField;
+        type            freestream;
+        freestreamValue $internalField;
     }
 
-    Wing.stl
+    "(Wing.stl|Tips.stl)"
     {
-        type            zeroGradient;
+        type            noSlip;
     }
 
     SYMMETRY
@@ -45,6 +47,8 @@ boundaryField
     {
         type            slip;
     }
+
 }
+
 
 // ************************************************************************* //

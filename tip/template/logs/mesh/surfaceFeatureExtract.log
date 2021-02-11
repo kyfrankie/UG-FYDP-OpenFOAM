@@ -1,0 +1,136 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : 4.x-d214c8dfd5ba
+Exec   : surfaceFeatureExtract
+Date   : Feb 11 2021
+Time   : 13:33:36
+Host   : "DESKTOP-1H96F7Q"
+PID    : 19478
+Case   : /home/kyfrankie/openfoam/tip/template
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Reading surfaceFeatureExtractDict
+
+Surface            : "Wing.stl"
+
+
+Feature line extraction is only valid on closed manifold surfaces.
+Statistics:
+Triangles    : 2746
+Vertices     : 1375
+Bounding Box : (-1.463814e-05 -0.0078212023 0) (0.1513253 0.01337585 0.3125)
+
+
+Constructing feature set from included angle 160
+Selecting edges purely based on geometric tests: no
+
+Initial feature set:
+    feature points : 2
+    feature edges  : 1376
+    of which
+        region edges   : 0
+        external edges : 1376
+        internal edges : 0
+
+
+Final feature set:
+    points : 1375
+    of which
+        convex             : 2
+        concave            : 0
+        mixed              : 0
+        non-feature        : 1373
+    edges  : 1376
+    of which
+        external edges     : 1376
+        internal edges     : 0
+        flat edges         : 0
+        open edges         : 0
+        multiply connected : 0
+
+Writing extendedFeatureEdgeMesh to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Wing.extendedFeatureEdgeMesh"
+
+Writing extendedEdgeMesh components to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Wing"
+Writing convex feature points to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Wing_convexFeaturePts.obj"
+Writing concave feature points to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Wing_concaveFeaturePts.obj"
+Writing mixed feature points to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Wing_mixedFeaturePts.obj"
+Writing mixed feature point structure to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Wing_mixedFeaturePtsStructure.obj"
+Writing external edges to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Wing_externalEdges.obj"
+Writing internal edges to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Wing_internalEdges.obj"
+Writing flat edges to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Wing_flatEdges.obj"
+Writing open edges to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Wing_openEdges.obj"
+Writing multiple edges to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Wing_multipleEdges.obj"
+Writing region edges to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Wing_regionEdges.obj"
+Writing edge directions to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Wing_edgeDirections.obj"
+
+Writing featureEdgeMesh to "/home/kyfrankie/openfoam/tip/template/constant/triSurface/Wing.eMesh"
+
+Surface            : "Tips.stl"
+
+
+Feature line extraction is only valid on closed manifold surfaces.
+Statistics:
+Triangles    : 6720
+Vertices     : 3366
+Bounding Box : (0.02522791 -0.001 0.3125) (0.0955 0.0049999999 0.39653069)
+
+
+Constructing feature set from included angle 160
+Selecting edges purely based on geometric tests: no
+
+Initial feature set:
+    feature points : 18
+    feature edges  : 3375
+    of which
+        region edges   : 0
+        external edges : 3372
+        internal edges : 3
+
+
+Final feature set:
+    points : 3366
+    of which
+        convex             : 12
+        concave            : 0
+        mixed              : 6
+        non-feature        : 3348
+    edges  : 3375
+    of which
+        external edges     : 3372
+        internal edges     : 3
+        flat edges         : 0
+        open edges         : 0
+        multiply connected : 0
+
+Writing extendedFeatureEdgeMesh to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Tips.extendedFeatureEdgeMesh"
+
+Writing extendedEdgeMesh components to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Tips"
+Writing convex feature points to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Tips_convexFeaturePts.obj"
+Writing concave feature points to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Tips_concaveFeaturePts.obj"
+Writing mixed feature points to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Tips_mixedFeaturePts.obj"
+Writing mixed feature point structure to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Tips_mixedFeaturePtsStructure.obj"
+Writing external edges to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Tips_externalEdges.obj"
+Writing internal edges to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Tips_internalEdges.obj"
+Writing flat edges to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Tips_flatEdges.obj"
+Writing open edges to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Tips_openEdges.obj"
+Writing multiple edges to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Tips_multipleEdges.obj"
+Writing region edges to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Tips_regionEdges.obj"
+Writing edge directions to "/home/kyfrankie/openfoam/tip/template/constant/extendedFeatureEdgeMesh/Tips_edgeDirections.obj"
+
+Writing featureEdgeMesh to "/home/kyfrankie/openfoam/tip/template/constant/triSurface/Tips.eMesh"
+
+ExecutionTime = 0.07 s  ClockTime = 0 s
+
+End
+

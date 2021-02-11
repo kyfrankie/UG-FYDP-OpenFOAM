@@ -1,0 +1,73 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : 4.x-d214c8dfd5ba
+Exec   : blockMesh
+Date   : Feb 11 2021
+Time   : 13:33:36
+Host   : "DESKTOP-1H96F7Q"
+PID    : 19476
+Case   : /home/kyfrankie/openfoam/tip/template
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Creating block mesh from
+    "/home/kyfrankie/openfoam/tip/template/system/blockMeshDict"
+Creating curved edges
+Creating topology blocks
+Creating topology patches
+
+Creating block mesh topology
+
+Check topology
+
+	Basic statistics
+		Number of internal faces : 0
+		Number of boundary faces : 6
+		Number of defined boundary faces : 6
+		Number of undefined boundary faces : 0
+	Checking patch -> block consistency
+
+Creating block offsets
+Creating merge list .
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale 1
+    Block 0 cell size :
+        i : 0.1 .. 0.1
+        j : 0.1 .. 0.1
+        k : 0.1 .. 0.1
+
+
+Writing polyMesh
+----------------
+Mesh Information
+----------------
+  boundingBox: (-1.5 -1.5 0) (3 1.5 1.5)
+  nPoints: 22816
+  nCells: 20250
+  nFaces: 63225
+  nInternalFaces: 58275
+----------------
+Patches
+----------------
+  patch 0 (start: 58275 size: 675) name: TOP
+  patch 1 (start: 58950 size: 675) name: BOTTOM
+  patch 2 (start: 59625 size: 450) name: INLET
+  patch 3 (start: 60075 size: 450) name: OUTLET
+  patch 4 (start: 60525 size: 1350) name: SYMMETRY
+  patch 5 (start: 61875 size: 1350) name: WALL
+
+End
+

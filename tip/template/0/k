@@ -32,9 +32,9 @@ boundaryField
         freestreamValue $internalField;
     }
 
-    "(Wing.stl|WingTip)"
+    "(Wing.stl|Tips.stl)"
     {
-        type            kqRWallFunction;
+        type            kLowReWallFunction;
         value           $internalField;
     }
 
