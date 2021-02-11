@@ -28,7 +28,7 @@ boundaryField
 
     "(wing_surface|wing_tip)"
     {
-        type            kLowReWallFunction;
+        type            kqRWallFunction;
         value           $internalField;
     }
 
