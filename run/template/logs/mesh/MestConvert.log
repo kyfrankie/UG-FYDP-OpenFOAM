@@ -1,0 +1,67 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : 4.x-d214c8dfd5ba
+Exec   : fluent3DMeshToFoam PCase1Feb11_1_2_1M.msh
+Date   : Feb 11 2021
+Time   : 15:14:39
+Host   : "mercury-VirtualBox"
+PID    : 2945
+Case   : /home/mercury/Desktop/template
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Dimension of grid: 3
+Number of points: 581983
+Number of faces: 4615913
+Number of cells: 2135392
+PointGroup: 3 start: 0 end: 544231.  Reading points...done.
+PointGroup: 4 start: 544232 end: 581982.  Reading points...done.
+FaceGroup: 1 start: 0 end: 4542424.  Reading mixed faces...done.
+FaceGroup: 5 start: 4542425 end: 4552585.  Reading mixed faces...done.
+FaceGroup: 6 start: 4552586 end: 4553358.  Reading uniform faces...done.
+FaceGroup: 7 start: 4553359 end: 4553461.  Reading uniform faces...done.
+FaceGroup: 8 start: 4553462 end: 4554235.  Reading uniform faces...done.
+FaceGroup: 9 start: 4554236 end: 4614535.  Reading uniform faces...done.
+FaceGroup: 10 start: 4614536 end: 4615912.  Reading uniform faces...done.
+CellGroup: 2 start: 0 end: 2135391 type: 1
+Zone: 1 name: interior-solid type: interior.  Reading zone data...done.
+Zone: 2 name: solid type: fluid.  Reading zone data...done.
+Zone: 5 name: near_side type: wall.  Reading zone data...done.
+Zone: 6 name: far_side type: wall.  Reading zone data...done.
+Zone: 7 name: outlet type: pressure-outlet.  Reading zone data...done.
+Zone: 8 name: inlet type: velocity-inlet.  Reading zone data...done.
+Zone: 9 name: wing_surface type: wall.  Reading zone data...done.
+Zone: 10 name: wing_tip type: wall.  Reading zone data...done.
+
+FINISHED LEXING
+
+Creating patch 0 for zone: 5 name: near_side type: wall
+Creating patch 1 for zone: 6 name: far_side type: wall
+Creating patch 2 for zone: 7 name: outlet type: pressure-outlet
+Creating patch 3 for zone: 8 name: inlet type: velocity-inlet
+Creating patch 4 for zone: 9 name: wing_surface type: wall
+Creating patch 5 for zone: 10 name: wing_tip type: wall
+Creating cellZone 0 name: solid type: fluid
+Creating faceZone 0 name: interior-solid type: interior
+faceZone from Fluent indices: 0 to: 4542424 type: interior
+patch 0 from Fluent indices: 4542425 to: 4552585 type: wall
+patch 1 from Fluent indices: 4552586 to: 4553358 type: wall
+patch 2 from Fluent indices: 4553359 to: 4553461 type: pressure-outlet
+patch 3 from Fluent indices: 4553462 to: 4554235 type: velocity-inlet
+patch 4 from Fluent indices: 4554236 to: 4614535 type: wall
+patch 5 from Fluent indices: 4614536 to: 4615912 type: wall
+
+Writing mesh to "/home/mercury/Desktop/template/constant/region0"
+
+End
+
