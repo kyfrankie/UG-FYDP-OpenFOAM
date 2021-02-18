@@ -24,7 +24,7 @@ boundaryField
     "(inlet|far_side)"
     {
         type            fixedValue;
-        Value $internalField;
+        value           $internalField;
     }
 
     outlet
