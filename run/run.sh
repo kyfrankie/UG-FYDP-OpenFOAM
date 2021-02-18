@@ -6,7 +6,7 @@
 #       SLURM command or statement.
 
 
-#SBATCH -J CFD_Merc_Case1_low #Slurm job name
+#SBATCH -J PC1_5LowRe #Slurm job name
 
 # Set the maximum runtime, uncomment if you need it
 ##SBATCH -t 48:00:00 #Maximum runtime of 48 hours
@@ -32,26 +32,15 @@ source /usr/local/setup/openfoam-4.1.sh
 cd "template" || exit
 name="PCase1"
 
-#AOA=("-AOA12")
-#list=("internalField  uniform (5.06094 1.07574 0.0 );")
-#liftDir=("liftDir           (-0.20791 0.97815 0.0 );")
-#dragDir=("dragDir           (0.97815 0.20791 0.0 );")
+# AOA=("-AOA2" "-AOA4" "-AOA6" "-AOA8" "-AOA10")
+# list=("internalField  uniform (22.98599 0.80269 0.0 );" "internalField  uniform (22.94397 1.60440 0.0 );" "internalField  uniform (22.87400 2.40415 0.0 );" "internalField  uniform (22.77617 3.20098 0.0 );" "internalField  uniform (22.65058 3.99391 0.0 );")
+# liftDir=("liftDir           (-0.03490 0.99939 0.0 );" "liftDir           (-0.06976 0.99756 0.0 );" "liftDir           (-0.10453 0.99452 0.0 );" "liftDir           (-0.13917 0.99027 0.0 );" "liftDir           (-0.17365 0.98481 0.0 );")
+# dragDir=("dragDir           (0.99939 0.03490 0.0 );" "dragDir           (0.99756 0.06976 0.0 );" "dragDir           (0.99452 0.10453 0.0 );" "dragDir           (0.99027 0.13917 0.0 );" "dragDir           (0.98481 0.17365 0.0 );")
 
-AOA=("-AOA2" "-AOA4" "-AOA6" "-AOA8" "-AOA10")
-list=("internalField  uniform (22.98599 0.80269 0.0 );" "internalField  uniform (22.94397 1.60440 0.0 );" "internalField  uniform (22.87400 2.40415 0.0 );" "internalField  uniform (22.77617 3.20098 0.0 );" "internalField  uniform (22.65058 3.99391 0.0 );")
-liftDir=("liftDir           (-0.03490 0.99939 0.0 );" "liftDir           (-0.06976 0.99756 0.0 );" "liftDir           (-0.10453 0.99452 0.0 );" "liftDir           (-0.13917 0.99027 0.0 );" "liftDir           (-0.17365 0.98481 0.0 );")
-dragDir=("dragDir           (0.99939 0.03490 0.0 );" "dragDir           (0.99756 0.06976 0.0 );" "dragDir           (0.99452 0.10453 0.0 );" "dragDir           (0.99027 0.13917 0.0 );" "dragDir           (0.98481 0.17365 0.0 );")
-
-#Pauls
-# AOA=("-AOA4")
-# list=("internalField  uniform (22.94397 1.60440 0.0 );")
-# liftDir=("liftDir           (-0.06976 0.99756 0.0 );")
-# dragDir=("dragDir           (0.99756 0.06976 0.0 );")
-
-#AOA=("-AOA2" "-AOA4" "-AOA6" "-AOA8" "-AOA10" "-AOA12" "-AOA14" "-AOA16" "-AOA18")
-#list=("internalField  uniform (22.98599 0.80269 0.0 );" "internalField  uniform (22.94397 1.60440 0.0 );" "internalField  uniform (22.87400 2.40415 0.0 );" "internalField  uniform (22.77617 3.20098 0.0 );" "internalField  uniform (22.65058 3.99391 0.0 );" "internalField  uniform (22.49739 4.78197 0.0 );" "internalField  uniform (22.31680 5.56420 0.0 );" "internalField  uniform (22.10902 6.33966 0.0 );" "internalField  uniform (21.87430 7.10739 0.0 );") 
-#liftDir=("liftDir           (-0.03490 0.99939 0.0 );" "liftDir           (-0.06976 0.99756 0.0 );" "liftDir           (-0.10453 0.99452 0.0 );" "liftDir           (-0.13917 0.99027 0.0 );" "liftDir           (-0.17365 0.98481 0.0 );" "liftDir           (-0.20791 0.97815 0.0 );" "liftDir           (-0.24192 0.97030 0.0 );" "liftDir           (-0.27564 0.96126 0.0 );" "liftDir           (-0.30902 0.95106 0.0 );")
-#dragDir=("dragDir           (0.99939 0.03490 0.0 );" "dragDir           (0.99756 0.06976 0.0 );" "dragDir           (0.99452 0.10453 0.0 );" "dragDir           (0.99027 0.13917 0.0 );" "dragDir           (0.98481 0.17365 0.0 );" "dragDir           (0.97815 0.20791 0.0 );" "dragDir           (0.97030 0.24192 0.0 );" "dragDir           (0.96126 0.27564 0.0 );" "dragDir           (0.95106 0.30902 0.0 );")
+AOA=("-AOA0" "-AOA4" "-AOA8" "-AOA12" "-AOA16" "-AOA20" )
+list=("internalField  uniform (23.00000 0.00000 0.0 );" "internalField  uniform (22.94397 1.60440 0.0 );" "internalField  uniform (22.77617 3.20098 0.0 );" "internalField  uniform (22.49739 4.78197 0.0 );" "internalField  uniform (22.10902 6.33966 0.0 );" "internalField  uniform (21.61293 7.86646 0.0 );" )
+liftDir=("liftDir           (0.00000 1.00000 0.0 );" "liftDir           (-0.06976 0.99756 0.0 );" "liftDir           (-0.13917 0.99027 0.0 );" "liftDir           (-0.20791 0.97815 0.0 );" "liftDir           (-0.27564 0.96126 0.0 );" "liftDir           (-0.34202 0.93969 0.0 );" )
+dragDir=("dragDir           (1.00000 0.00000 0.0 );" "dragDir           (0.99756 0.06976 0.0 );" "dragDir           (0.99027 0.13917 0.0 );" "dragDir           (0.97815 0.20791 0.0 );" "dragDir           (0.96126 0.27564 0.0 );" "dragDir           (0.93969 0.34202 0.0 );" )
 
 mkdir "../result/$name"
 t=0
@@ -65,7 +54,7 @@ for u in "${list[@]}"
     rm -r [0-9].[0-9]*
     rm ./*.foam
 
-    echo "$u"
+    echo "Changing flow speed: $u"
     sed -i 20s/.*/"$u"/ 0/U
     echo "Changing: ${liftDir[t]} ${dragDir[t]}"
     sed -i 20s/.*/"${liftDir[t]}"/ system/forceCoefficient
