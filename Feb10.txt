@@ -25,3 +25,7 @@ wingtip FLT = 0.00033
 Y+ 39
 mainwing FLT = 0.00052
 wingtip FLT = 0.00042
+
+Y+ 5
+mainwing FLT = 0.0000667
+wingtip FLT = 0.000055
