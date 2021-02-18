@@ -20,10 +20,17 @@ internalField   uniform 0.02;
 
 boundaryField
 {
-    "(outlet|inlet|far_side)"
+    "(inlet|far_side)"
     {
         type            freestream;
         freestreamValue $internalField;
+    }
+
+    outlet
+    {
+        type            inletOutlet;
+        inletValue      $internalField;
+        value           $internalField;
     }
 
     "(wing_surface|wing_tip)"

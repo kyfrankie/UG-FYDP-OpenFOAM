@@ -28,7 +28,7 @@ boundaryField
 
     "(wing_surface|wing_tip)"
     {
-        type            nutUSpaldingWallFunction;
+        type            nutLowReWallFunction;
         value           uniform 0;
     }
 
