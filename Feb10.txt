@@ -35,3 +35,5 @@ wingtip FLT = 0.000055
 At the outlet of the model (also in any region), the typical boundary condition for pressure is fixed static pressure. For all the other quantities a typical choice is zeroGradient.
 
 According to https://www.cfdsupport.com/OpenFOAM-Training-by-CFD-Support/node109.html
+
+Updated Feb 18
