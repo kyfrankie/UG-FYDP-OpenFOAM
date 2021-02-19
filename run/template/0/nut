@@ -35,8 +35,14 @@ boundaryField
 
     Wing.stl
     {
-        type            nutkWallFunction;
+        //type            nutkWallFunction;
+        //value           uniform 0;
+
+        type            nutUSpaldingWallFunction;
         value           uniform 0;
+
+        //type            calculated;
+        //value           uniform 0;
     }
 
     SYMMETRY

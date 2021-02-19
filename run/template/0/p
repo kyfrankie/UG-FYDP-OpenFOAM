@@ -20,15 +20,19 @@ internalField   uniform 0;
 
 boundaryField
 {
-    "(INLET|BOTTOM)"
+    "(INLET|BOTTOM|TOP)"
     {
         type            zeroGradient;
+
+        //type          freestreamPressure;
     }
 
-    "(OUTLET|TOP)"
+    "(OUTLET)"
     {
         type            fixedValue;
         value           $internalField;
+
+        //type          freestreamPressure;
     }
 
     Wing.stl

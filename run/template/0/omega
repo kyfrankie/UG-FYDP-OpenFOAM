@@ -35,7 +35,7 @@ boundaryField
     Wing.stl
     {
         type            omegaWallFunction;
-        value           $internalField;
+        value           $internalField;;
     }
 
     SYMMETRY

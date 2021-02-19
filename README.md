@@ -6,6 +6,7 @@ Last updated on 07/2/2021.
 - 29/1: Update MatLab PostProcess code. 
 - 01/2: Added [y+](run/template/system/yPlus) postProcess utility.
 - 07/2: Change boundary condition to freeStream and update mesh setting. Adjust `featureAngle` to 180 to improve layers coverage. Changed layering thickness to achieve y+ >= 30 in order to apply [wall functions](https://www.cfd-online.com/Forums/openfoam-solving/165971-how-implement-k-omega-sst-without-wall-functions.html). Please adjust the `first layer thickness` in SnappyHexMeshdict and `end time` in ControlDict to fit your simulation. Current setting is for 23m/s tip aileron validation case.
+- 20/2: Added different wall functions option for 0/
 
 Table of Contents
 - [Job submission](#job-submission)
