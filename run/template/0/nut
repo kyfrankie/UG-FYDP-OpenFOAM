@@ -24,12 +24,22 @@ boundaryField
     {
         type            calculated;
         value           uniform 0;
+        
     }
 
     "(wing_surface|wing_tip)"
     {
         type            nutLowReWallFunction;
         value           uniform 0;
+
+        //type            nutkWallFunction;
+        //value           uniform 0;
+
+        //type            nutUSpaldingWallFunction;
+        //value           uniform 0;
+
+        //type            calculated;
+        //value           uniform 0;
     }
 
     near_side

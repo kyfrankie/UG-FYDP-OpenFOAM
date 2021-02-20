@@ -25,6 +25,9 @@ boundaryField
     {
         type            fixedValue;
         value           $internalField;
+
+        //type            freestream;
+        //freestreamValue $internalField;
     }
 
     outlet
@@ -32,6 +35,9 @@ boundaryField
         type            inletOutlet;
         value           $internalField;
         inletValue      uniform (0 0 0);
+
+        //type            freestream;
+        //freestreamValue $internalField;
     }
 
     "(wing_surface|wing_tip)"
