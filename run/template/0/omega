@@ -33,7 +33,7 @@ boundaryField
     {
         type            inletOutlet;
         inletValue      $internalField;
-        value           $internalField;
+        value           0;
 
         //type            freestream;
         //freestreamValue $internalField;
