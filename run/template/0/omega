@@ -16,38 +16,30 @@ FoamFile
 
 dimensions      [0 0 -1 0 0 0 0];
 
-internalField   uniform 127.25;
+internalField   uniform 10.4;
 
 boundaryField
 {
-    "(inlet|far_side)"
+    "(inlet|top|bottom|outlet)"
     {
-        type            fixedValue;
-        value           $internalField;
-
-        //type            freestream;
-        //freestreamValue $internalField;
+        type            freestream;
+        freestreamValue $internalField;
     }
 
-    outlet
+    side
     {
-        type            inletOutlet;
-        inletValue      $internalField;
-        value           $internalField;
-
-        //type            freestream;
-        //freestreamValue $internalField;
+        type            slip;
     }
 
-    "(wing_surface|wing_tip)"
+    wall
     {
         type            omegaWallFunction;
         value           $internalField;
     }
 
-    near_side
+    symmetry
     {
-        type            symmetryPlane;
+        type            symmetry;
     }
 
 }

@@ -20,7 +20,7 @@ internalField   uniform 0;
 
 boundaryField
 {
-    "(inlet|far_side)"
+    "(inlet|top|bottom)"
     {
         type            zeroGradient;
     }
@@ -31,14 +31,19 @@ boundaryField
         value           $internalField;
     }
 
-    "(wing_surface|wing_tip)"
+    side
+    {
+        type            slip;
+    }
+
+    wall
     {
         type            zeroGradient;
     }
 
-    near_side
+    symmetry
     {
-        type            symmetryPlane;
+        type            symmetry;
     }
 
 }

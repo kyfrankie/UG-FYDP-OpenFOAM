@@ -1,0 +1,244 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.x                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : 4.x-d214c8dfd5ba
+Exec   : fluent3DMeshToFoam constant/mesh/PCase4_highy.msh
+Date   : Feb 24 2021
+Time   : 16:55:03
+Host   : "DESKTOP-1H96F7Q"
+PID    : 19203
+Case   : /home/kyfrankie/openfoam/run/template
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Reading header: "ANSYS(R) TGrid(TM) 3D, parallel 18.1.0"
+Dimension of grid: 3
+Number of points: 1315630
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 16
+Number of faces: 2923860
+Number of cells: 837326
+PointGroup: 1 start: 0 end: 686.  Reading points...done.
+PointGroup: 60 start: 687 end: 3931.  Reading points...done.
+PointGroup: 269 start: 3932 end: 88633.  Reading points...done.
+PointGroup: 301 start: 88634 end: 1315629.  Reading points...done.
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1315657
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1315674
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1315691
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1315723
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1315755
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1315772
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1315804
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1315879
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1315925
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1315971
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1315988
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1316034
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1316081
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1316087
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1316162
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1316317
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1316606
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1316713
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1316723
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1316866
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1316875
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1316880
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1317196
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1317205
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1317229
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1317275
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1317802
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1318603
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1318985
+--> FOAM Warning : Found unknown block of type: "11"
+    on line 1321560
+FaceGroup: 345 start: 30325 end: 2923859.  Reading mixed faces...done.
+FaceGroup: 89 start: 0 end: 581.  Reading mixed faces...done.
+FaceGroup: 90 start: 582 end: 2771.  Reading mixed faces...done.
+FaceGroup: 91 start: 2772 end: 3601.  Reading mixed faces...done.
+FaceGroup: 92 start: 3602 end: 4437.  Reading mixed faces...done.
+FaceGroup: 93 start: 4438 end: 6070.  Reading mixed faces...done.
+FaceGroup: 94 start: 6071 end: 16417.  Reading mixed faces...done.
+FaceGroup: 96 start: 16418 end: 18194.  Reading mixed faces...done.
+FaceGroup: 98 start: 18195 end: 18691.  Reading mixed faces...done.
+FaceGroup: 95 start: 18692 end: 25633.  Reading mixed faces...done.
+FaceGroup: 97 start: 25634 end: 27258.  Reading mixed faces...done.
+FaceGroup: 99 start: 27259 end: 30324.  Reading mixed faces...done.
+CellGroup: 265 start: 0 end: 837325 type: 1
+--> FOAM Warning : Found unknown block of type: "316"
+    on line 4247693
+--> FOAM Warning : Found unknown block of type: "316"
+    on line 4248382
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4251630
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4252216
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4254410
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4255244
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4256084
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4257721
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4267491
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4270954
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4272495
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4273103
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4273574
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4273968
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4277454
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4277848
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4278244
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4278856
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4279273
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4279397
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4279501
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4279898
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4279925
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4280034
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4280135
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4280162
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4280559
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4280682
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4280785
+--> FOAM Warning : Found unknown block of type: "71"
+    on line 4280812
+Zone: 265 name: solid type: fluid.  Reading zone data...done.
+Zone: 99 name: wing_tip type: wall.  Reading zone data...done.
+Zone: 97 name: wing_te type: wall.  Reading zone data...done.
+Zone: 95 name: wing_surface type: wall.  Reading zone data...done.
+Zone: 98 name: wing_end type: wall.  Reading zone data...done.
+Zone: 96 name: wing_le type: wall.  Reading zone data...done.
+Zone: 94 name: symmetry type: symmetry.  Reading zone data...done.
+Zone: 93 name: side type: velocity-inlet.  Reading zone data...done.
+Zone: 92 name: bottom type: velocity-inlet.  Reading zone data...done.
+Zone: 91 name: top type: velocity-inlet.  Reading zone data...done.
+Zone: 90 name: outlet type: pressure-outlet.  Reading zone data...done.
+Zone: 89 name: inlet type: velocity-inlet.  Reading zone data...done.
+Zone: 345 name: interior-solid type: interior.  Reading zone data...done.
+Zone: 271 name: feature:271 type: boundary-edge.  Reading zone data...done.
+Zone: 262 name: edge-p-262 type: boundary-edge.  Reading zone data...done.
+Zone: 88 name: _solid:feature.1.88 type: boundary-edge.  Reading zone data...done.
+Zone: 87 name: _solid:feature.87 type: boundary-edge.  Reading zone data...done.
+Zone: 86 name: _wing_tip:feature.86 type: boundary-edge.  Reading zone data...done.
+Zone: 85 name: _wing_end:wing_tip:solid:feature.1.85 type: boundary-edge.  Reading zone data...done.
+Zone: 84 name: _wing_end:wing_tip:solid:feature.84 type: boundary-edge.  Reading zone data...done.
+Zone: 83 name: _wing_end:wing_te:solid:feature.83 type: boundary-edge.  Reading zone data...done.
+Zone: 82 name: _wing_te:feature.82 type: boundary-edge.  Reading zone data...done.
+Zone: 81 name: _symmetry:wing_te:solid:feature.1.81 type: boundary-edge.  Reading zone data...done.
+Zone: 80 name: _wing_end:wing_le:solid:feature.80 type: boundary-edge.  Reading zone data...done.
+Zone: 79 name: _wing_le:wing_surface:solid:feature.1.79 type: boundary-edge.  Reading zone data...done.
+Zone: 78 name: _symmetry:wing_le:solid:feature.78 type: boundary-edge.  Reading zone data...done.
+Zone: 77 name: _wing_end:wing_surface:solid:feature.77 type: boundary-edge.  Reading zone data...done.
+Zone: 76 name: _wing_surface:wing_te:solid:feature.76 type: boundary-edge.  Reading zone data...done.
+Zone: 75 name: _wing_le:wing_surface:solid:feature.75 type: boundary-edge.  Reading zone data...done.
+Zone: 74 name: _symmetry:wing_surface:solid:feature.74 type: boundary-edge.  Reading zone data...done.
+Zone: 73 name: _symmetry:wing_te:solid:feature.73 type: boundary-edge.  Reading zone data...done.
+Zone: 72 name: _bottom:symmetry:solid:feature.72 type: boundary-edge.  Reading zone data...done.
+Zone: 71 name: _bottom:side:solid:feature.71 type: boundary-edge.  Reading zone data...done.
+Zone: 70 name: _bottom:outlet:solid:feature.70 type: boundary-edge.  Reading zone data...done.
+Zone: 69 name: _symmetry:top:solid:feature.69 type: boundary-edge.  Reading zone data...done.
+Zone: 68 name: _side:top:solid:feature.68 type: boundary-edge.  Reading zone data...done.
+Zone: 67 name: _outlet:symmetry:solid:feature.67 type: boundary-edge.  Reading zone data...done.
+Zone: 66 name: _outlet:side:solid:feature.66 type: boundary-edge.  Reading zone data...done.
+Zone: 65 name: _outlet:top:solid:feature.65 type: boundary-edge.  Reading zone data...done.
+Zone: 64 name: _inlet:symmetry:solid:feature.64 type: boundary-edge.  Reading zone data...done.
+Zone: 63 name: _inlet:side:solid:feature.63 type: boundary-edge.  Reading zone data...done.
+Zone: 62 name: _bottom:inlet:solid:feature.62 type: boundary-edge.  Reading zone data...done.
+Zone: 61 name: _inlet:top:solid:feature.61 type: boundary-edge.  Reading zone data...done.
+--> FOAM Warning : Found unknown block of type: "73"
+    on line 4282397
+
+FINISHED LEXING
+
+Creating patch 0 for zone: 89 name: inlet type: velocity-inlet
+Creating patch 1 for zone: 90 name: outlet type: pressure-outlet
+Creating patch 2 for zone: 91 name: top type: velocity-inlet
+Creating patch 3 for zone: 92 name: bottom type: velocity-inlet
+Creating patch 4 for zone: 93 name: side type: velocity-inlet
+Creating patch 5 for zone: 94 name: symmetry type: symmetry
+Creating patch 6 for zone: 96 name: wing_le type: wall
+Creating patch 7 for zone: 98 name: wing_end type: wall
+Creating patch 8 for zone: 95 name: wing_surface type: wall
+Creating patch 9 for zone: 97 name: wing_te type: wall
+Creating patch 10 for zone: 99 name: wing_tip type: wall
+Creating cellZone 0 name: solid type: fluid
+Creating faceZone 0 name: interior-solid type: interior
+faceZone from Fluent indices: 30325 to: 2923859 type: interior
+patch 0 from Fluent indices: 0 to: 581 type: velocity-inlet
+patch 1 from Fluent indices: 582 to: 2771 type: pressure-outlet
+patch 2 from Fluent indices: 2772 to: 3601 type: velocity-inlet
+patch 3 from Fluent indices: 3602 to: 4437 type: velocity-inlet
+patch 4 from Fluent indices: 4438 to: 6070 type: velocity-inlet
+patch 5 from Fluent indices: 6071 to: 16417 type: symmetry
+patch 6 from Fluent indices: 16418 to: 18194 type: wall
+patch 7 from Fluent indices: 18195 to: 18691 type: wall
+patch 8 from Fluent indices: 18692 to: 25633 type: wall
+patch 9 from Fluent indices: 25634 to: 27258 type: wall
+patch 10 from Fluent indices: 27259 to: 30324 type: wall
+
+Writing mesh to "/home/kyfrankie/openfoam/run/template/constant/region0"
+
+End
+

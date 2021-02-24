@@ -52,8 +52,6 @@ PIMPLE
     nOuterCorrectors 1;
     nCorrectors     2;
     nNonOrthogonalCorrectors 2;
-    pRefValue        0;
-    pRefPoint        (-1.99 0.00 0.00);
 }
 
 relaxationFactors

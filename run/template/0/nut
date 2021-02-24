@@ -20,20 +20,27 @@ internalField   uniform 0;
 
 boundaryField
 {
-    "(outlet|inlet|far_side)"
+    "(inlet|top|bottom|outlet)"
     {
         type            calculated;
         value           uniform 0;
         
     }
 
-    "(wing_surface|wing_tip)"
+    side
     {
-        type            nutLowReWallFunction;
+        type            calculated;
         value           uniform 0;
+        
+    }
 
-        //type            nutkWallFunction;
+    wall
+    {
+        //type            nutLowReWallFunction;
         //value           uniform 0;
+
+        type            nutkWallFunction;
+        value           uniform 0;
 
         //type            nutUSpaldingWallFunction;
         //value           uniform 0;
@@ -42,9 +49,9 @@ boundaryField
         //value           uniform 0;
     }
 
-    near_side
+    symmetry
     {
-        type            symmetryPlane;
+        type            symmetry;
     }
 
 }

@@ -13,7 +13,7 @@ Description
 type              forces;
 libs              ("libforces.so");
 log               yes;
-patches           ( wing_surface wing_tip );
+patches           ( wall );
 rho               rhoInf;
 rhoInf            1.191;
 CofR              (0 0 0);

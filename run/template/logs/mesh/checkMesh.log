@@ -7,10 +7,10 @@
 \*---------------------------------------------------------------------------*/
 Build  : 4.x-d214c8dfd5ba
 Exec   : checkMesh
-Date   : Feb 02 2021
-Time   : 16:28:05
+Date   : Feb 24 2021
+Time   : 16:56:28
 Host   : "DESKTOP-1H96F7Q"
-PID    : 1872
+PID    : 19361
 Case   : /home/kyfrankie/openfoam/run/template
 nProcs : 1
 sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
@@ -25,61 +25,86 @@ Create polyMesh for time = 0
 Time = 0
 
 Mesh stats
-    points:           808305
-    internal points:  769042
-    faces:            7289665
-    internal faces:   7213163
-    cells:            3469857
-    faces per cell:   4.1796616
-    boundary patches: 6
+    points:           1315630
+    faces:            2923860
+    internal faces:   2893535
+    cells:            837326
+    faces per cell:   6.9475867
+    boundary patches: 11
     point zones:      0
     face zones:       1
     cell zones:       1
 
 Overall number of cells of each type:
-    hexahedra:     0
-    prisms:        623400
-    wedges:        0
+    hexahedra:     613984
+    prisms:        821
+    wedges:        246
     pyramids:      0
-    tet wedges:    0
-    tetrahedra:    2846457
-    polyhedra:     0
+    tet wedges:    1
+    tetrahedra:    1
+    polyhedra:     222273
+    Breakdown of polyhedra by number of faces:
+        faces   number of cells
+            5   1
+            6   2018
+            7   35303
+            8   71729
+            9   30043
+           10   15298
+           11   16792
+           12   16534
+           13   13376
+           14   10231
+           15   6283
+           16   3021
+           17   1170
+           18   316
+           19   115
+           20   28
+           21   10
+           22   4
+           25   1
 
 Checking topology...
     Boundary definition OK.
     Cell to face addressing OK.
-    Point usage OK.
+ ***Unused points found in the mesh, number unused by faces: 31797 number unused by cells: 31797
+  <<Writing 31797 unused points to set unusedPoints
     Upper triangular ordering OK.
     Face vertices OK.
     Number of regions: 1 (OK).
 
 Checking patch topology for multiply connected surfaces...
-    Patch               Faces    Points   Surface topology                  
-    SYMMETRY            12488    7386     ok (non-closed singly connected)  
-    WALL                781      427      ok (non-closed singly connected)  
-    OUTLET              103      66       ok (non-closed singly connected)  
-    INLET               790      427      ok (non-closed singly connected)  
-    Wing.stl            60600    30502    ok (non-closed singly connected)  
-    WingTip             1740     972      ok (non-closed singly connected)  
+                   Patch    Faces   Points                  Surface topology
+                   inlet      582     1166  ok (non-closed singly connected)
+                  outlet     2190     4381  ok (non-closed singly connected)
+                     top      830     1661  ok (non-closed singly connected)
+                  bottom      836     1674  ok (non-closed singly connected)
+                    side     1633     3267  ok (non-closed singly connected)
+                symmetry    10347    19932  ok (non-closed singly connected)
+                 wing_le     1777     3317  ok (non-closed singly connected)
+                wing_end      497      967  ok (non-closed singly connected)
+            wing_surface     6942    13887  ok (non-closed singly connected)
+                 wing_te     1625     2728  ok (non-closed singly connected)
+                wing_tip     3066     5163  ok (non-closed singly connected)
 
 Checking geometry...
-    Overall domain bounding box (-1.9975751 -2 -1.2246468e-16) (3.15 2 1.9999995)
+    Overall domain bounding box (-1.5 -1.5 0) (3 1.5 1.5)
     Mesh has 3 geometric (non-empty/wedge) directions (1 1 1)
     Mesh has 3 solution (non-empty) directions (1 1 1)
-    Boundary openness (-7.2620743e-17 8.8309003e-18 2.5376358e-15) OK.
-    Max cell openness = 3.2760733e-16 OK.
-    Max aspect ratio = 14.035706 OK.
-    Minimum face area = 2.3947111e-08. Maximum face area = 0.097233085.  Face area magnitudes OK.
-    Min volume = 3.7091798e-12. Max volume = 0.010136813.  Total volume = 28.092261.  Cell volumes OK.
-    Mesh non-orthogonality Max: 72.135909 average: 17.304201
-   *Number of severely non-orthogonal (> 70 degrees) faces: 208.
+    Boundary openness (-1.3020992e-16 6.3838248e-17 1.1930593e-15) OK.
+    Max cell openness = 3.2557723e-16 OK.
+    Max aspect ratio = 18.314864 OK.
+    Minimum face area = 9.0274661e-10. Maximum face area = 0.01148007.  Face area magnitudes OK.
+    Min volume = 1.5901677e-11. Max volume = 0.00052810433.  Total volume = 20.249447.  Cell volumes OK.
+    Mesh non-orthogonality Max: 60.195928 average: 10.476145
     Non-orthogonality check OK.
-  <<Writing 208 non-orthogonal faces to set nonOrthoFaces
     Face pyramids OK.
-    Max skewness = 2.423513 OK.
+ ***Max skewness = 4.1926941, 1 highly skew faces detected which may impair the quality of the results
+  <<Writing 1 skew faces to set skewFaces
     Coupled point location match (average 0) OK.
 
-Mesh OK.
+Failed 2 mesh checks.
 
 End
 
