@@ -5,6 +5,7 @@ Last updated on 01/2/2021.
 - 25/1: Increased flow field size in z-direction from 1.5 to 2.0 which should provide better convergence.
 - 29/1: Update MatLab PostProcess code. 
 - 01/2: Added [y+](run/template/system/yPlus) postProcess utility.
+- 25/2: Added run.sh automation for fluent mesh.
 
 Table of Contents
 - [Job submission](#job-submission)

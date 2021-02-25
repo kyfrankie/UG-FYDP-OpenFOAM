@@ -16,9 +16,9 @@ libs              ("libforces.so");
 patches           (wall);
 log               yes;
 rho               rhoInf;      // Indicates incompressible
-rhoInf            1.191;      // Redundant for incompressible
-liftDir           (-0.03489950 0.9993908 0.0 );
-dragDir           (0.9993908 0.03489950 0.0 );
+rhoInf            10000;      // Redundant for incompressible
+liftDir           (-0.27564 0.96126 0.0 );
+dragDir           (0.96126 0.27564 0.0 );
 CofR              (0 0 0);    // Centre of rotation for moment calculations
 pitchAxis         (0 0 1);
 magUInf           23;
