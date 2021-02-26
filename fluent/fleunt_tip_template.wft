@@ -1,144 +1,28 @@
 {
     "workflow": {
         "ROOT": {
-            "Workflow": {
-                "CurrentTask": "__________None",
-                "TaskList": [
-                    "TaskObject1",
-                    "TaskObject2",
-                    "TaskObject3",
-                    "TaskObject15",
-                    "TaskObject4",
-                    "TaskObject8",
-                    "TaskObject9",
-                    "TaskObject14"
-                ]
-            },
-            "TaskObject:TaskObject13": {
-                "TaskType": "Compound Child",
+            "TaskObject:TaskObject4": {
+                "TaskType": "Conditional",
                 "ObjectPath": "",
                 "Warnings": "",
-                "CommandName": "BodyOfInfluence",
+                "CommandName": "GeometrySetup",
                 "Arguments": {
-                    "AddChild": "yes",
-                    "BOIControlName": "refinement2",
-                    "BOIExecution": "Body Of Influence",
-                    "BOIFaceLabelList": "__________None",
-                    "BOIFaceZoneList": [
-                        "geom-refinement2"
-                    ],
-                    "BOIGrowthRate": "1.2",
-                    "BOIMaxSize": "112.5",
-                    "BOIMinSize": "0.439453125",
-                    "BOISize": "12",
-                    "BOIZoneorLabel": "zone"
-                },
-                "TaskList": "",
-                "InactiveTaskList": "",
-                "State": "Out-of-date",
-                "Errors": "",
-                "_name_": "refinement2"
-            },
-            "TaskObject:TaskObject7": {
-                "TaskType": "Simple",
-                "ObjectPath": "",
-                "Warnings": "",
-                "CommandName": "ComputeRegions",
-                "Arguments": "",
-                "TaskList": "",
-                "InactiveTaskList": "",
-                "State": "Out-of-date",
-                "Errors": "",
-                "_name_": "Create Regions"
-            },
-            "TaskObject:TaskObject2": {
-                "TaskType": "Compound",
-                "ObjectPath": "",
-                "Warnings": "",
-                "CommandName": "BodyOfInfluence",
-                "Arguments": {
-                    "AddChild": "yes"
+                    "CappingRequired": "Yes",
+                    "SetupInternalTypes": "__________None",
+                    "SetupInternals": "__________None",
+                    "SetupType": "The geometry consists of only fluid regions with no voids",
+                    "WallToInternal": "No"
                 },
                 "TaskList": [
-                    "TaskObject10",
-                    "TaskObject11",
-                    "TaskObject12",
-                    "TaskObject13",
-                    "TaskObject16"
+                    "TaskObject6"
                 ],
-                "InactiveTaskList": "",
+                "InactiveTaskList": [
+                    "TaskObject5",
+                    "TaskObject7"
+                ],
                 "State": "Out-of-date",
                 "Errors": "",
-                "_name_": "Add Local Sizing"
-            },
-            "TaskObject:TaskObject12": {
-                "TaskType": "Compound Child",
-                "ObjectPath": "",
-                "Warnings": "",
-                "CommandName": "BodyOfInfluence",
-                "Arguments": {
-                    "AddChild": "yes",
-                    "BOIControlName": "refinement1",
-                    "BOIExecution": "Body Of Influence",
-                    "BOIFaceLabelList": "__________None",
-                    "BOIFaceZoneList": [
-                        "geom-refinement1"
-                    ],
-                    "BOIGrowthRate": "1.2",
-                    "BOIMaxSize": "112.5",
-                    "BOIMinSize": "0.439453125",
-                    "BOISize": "25",
-                    "BOIZoneorLabel": "zone"
-                },
-                "TaskList": "",
-                "InactiveTaskList": "",
-                "State": "Out-of-date",
-                "Errors": "",
-                "_name_": "refinement1"
-            },
-            "TaskObject:TaskObject14": {
-                "_name_": "Improve Volume Mesh",
-                "Errors": "",
-                "State": "Out-of-date",
-                "InactiveTaskList": "",
-                "TaskList": "",
-                "Arguments": {
-                    "CellQualityLimit": "0.5",
-                    "VMImprovePreferences": {
-                        "ShowVMImprovePreferences": "true",
-                        "VIQualityIterations": "10",
-                        "VIQualityMinAngle": "0",
-                        "VIgnoreFeature": "yes"
-                    }
-                },
-                "CommandName": "VolumeMeshImprove",
-                "Warnings": "",
-                "ObjectPath": "",
-                "TaskType": "Simple"
-            },
-            "TaskObject:TaskObject6": {
-                "TaskType": "Simple",
-                "ObjectPath": "",
-                "Warnings": "",
-                "CommandName": "UpdateBoundary",
-                "Arguments": {
-                    "BoundaryLabelList": "__________None",
-                    "BoundaryLabelTypeList": "__________None",
-                    "BoundaryZoneList": "__________None",
-                    "BoundaryZoneTypeList": "__________None",
-                    "MeshObject": "",
-                    "OldBoundaryLabelList": "__________None",
-                    "OldBoundaryLabelTypeList": "__________None",
-                    "OldBoundaryZoneList": "__________None",
-                    "OldBoundaryZoneTypeList": "__________None",
-                    "OldLabelZoneList": "__________None",
-                    "SelectionType": "label"
-                },
-                "TaskList": "",
-                "InactiveTaskList": "",
-                "State": "Out-of-date",
-                "Errors": "",
-                "_name_": "Update Boundaries"
+                "_name_": "Describe Geometry"
             },
             "TaskObject:TaskObject11": {
                 "TaskType": "Compound Child",
@@ -165,6 +49,206 @@
                 "State": "Out-of-date",
                 "Errors": "",
                 "_name_": "wing_edge"
+            },
+            "TaskObject:TaskObject6": {
+                "TaskType": "Simple",
+                "ObjectPath": "",
+                "Warnings": "",
+                "CommandName": "UpdateBoundary",
+                "Arguments": {
+                    "BoundaryLabelList": [
+                        "top",
+                        "bottom",
+                        "side"
+                    ],
+                    "BoundaryLabelTypeList": [
+                        "velocity-inlet",
+                        "velocity-inlet",
+                        "velocity-inlet"
+                    ],
+                    "BoundaryZoneList": "__________None",
+                    "BoundaryZoneTypeList": "__________None",
+                    "MeshObject": "",
+                    "OldBoundaryLabelList": [
+                        "top",
+                        "bottom",
+                        "side"
+                    ],
+                    "OldBoundaryLabelTypeList": [
+                        "wall",
+                        "wall",
+                        "wall"
+                    ],
+                    "OldBoundaryZoneList": "__________None",
+                    "OldBoundaryZoneTypeList": "__________None",
+                    "OldLabelZoneList": "__________None",
+                    "SelectionType": "label"
+                },
+                "TaskList": "",
+                "InactiveTaskList": "",
+                "State": "Out-of-date",
+                "Errors": "",
+                "_name_": "Update Boundaries"
+            },
+            "TaskObject:TaskObject14": {
+                "TaskType": "Simple",
+                "ObjectPath": "",
+                "Warnings": "",
+                "CommandName": "VolumeMeshImprove",
+                "Arguments": {
+                    "CellQualityLimit": "0.5",
+                    "VMImprovePreferences": {
+                        "ShowVMImprovePreferences": "true",
+                        "VIQualityIterations": "5",
+                        "VIQualityMinAngle": "0",
+                        "VIgnoreFeature": "yes"
+                    }
+                },
+                "TaskList": "",
+                "InactiveTaskList": "",
+                "State": "Out-of-date",
+                "Errors": "",
+                "_name_": "Improve Volume Mesh"
+            },
+            "TaskObject:TaskObject7": {
+                "TaskType": "Simple",
+                "ObjectPath": "",
+                "Warnings": "",
+                "CommandName": "ComputeRegions",
+                "Arguments": "",
+                "TaskList": "",
+                "InactiveTaskList": "",
+                "State": "Out-of-date",
+                "Errors": "",
+                "_name_": "Create Regions"
+            },
+            "TaskObject:TaskObject12": {
+                "TaskType": "Compound Child",
+                "ObjectPath": "",
+                "Warnings": "",
+                "CommandName": "BodyOfInfluence",
+                "Arguments": {
+                    "AddChild": "yes",
+                    "BOIControlName": "refinement1",
+                    "BOIExecution": "Body Of Influence",
+                    "BOIFaceLabelList": "__________None",
+                    "BOIFaceZoneList": [
+                        "geom-refinement1"
+                    ],
+                    "BOIGrowthRate": "1.2",
+                    "BOIMaxSize": "112.5",
+                    "BOIMinSize": "0.439453125",
+                    "BOISize": "25",
+                    "BOIZoneorLabel": "zone"
+                },
+                "TaskList": "",
+                "InactiveTaskList": "",
+                "State": "Out-of-date",
+                "Errors": "",
+                "_name_": "refinement1"
+            },
+            "TaskObject:TaskObject2": {
+                "TaskType": "Compound",
+                "ObjectPath": "",
+                "Warnings": "",
+                "CommandName": "BodyOfInfluence",
+                "Arguments": {
+                    "AddChild": "yes"
+                },
+                "TaskList": [
+                    "TaskObject10",
+                    "TaskObject11",
+                    "TaskObject12",
+                    "TaskObject13",
+                    "TaskObject16"
+                ],
+                "InactiveTaskList": "",
+                "State": "Out-of-date",
+                "Errors": "",
+                "_name_": "Add Local Sizing"
+            },
+            "TaskObject:TaskObject8": {
+                "TaskType": "Simple",
+                "ObjectPath": "",
+                "Warnings": "",
+                "CommandName": "UpdateRegion",
+                "Arguments": {
+                    "MeshObject": "",
+                    "OldRegionNameList": "__________None",
+                    "OldRegionTypeList": "__________None",
+                    "RegionInternalTypes": "__________None",
+                    "RegionInternals": "__________None",
+                    "RegionNameList": "__________None",
+                    "RegionTypeList": "__________None"
+                },
+                "TaskList": "",
+                "InactiveTaskList": "",
+                "State": "Out-of-date",
+                "Errors": "",
+                "_name_": "Update Regions"
+            },
+            "TaskObject:TaskObject16": {
+                "TaskType": "Compound Child",
+                "ObjectPath": "",
+                "Warnings": "",
+                "CommandName": "BodyOfInfluence",
+                "Arguments": {
+                    "AddChild": "yes",
+                    "BOIControlName": "wing_tip",
+                    "BOIExecution": "Local Face Size",
+                    "BOIFaceLabelList": [
+                        "wing_end",
+                        "wing_tip"
+                    ],
+                    "BOIFaceZoneList": "__________None",
+                    "BOIGrowthRate": "1.2",
+                    "BOIMaxSize": "112.5",
+                    "BOIMinSize": "0.439453125",
+                    "BOISize": "2",
+                    "BOIZoneorLabel": "label"
+                },
+                "TaskList": "",
+                "InactiveTaskList": "",
+                "State": "Out-of-date",
+                "Errors": "",
+                "_name_": "wing_tip"
+            },
+            "TaskObject:TaskObject5": {
+                "TaskType": "Compound",
+                "ObjectPath": "",
+                "Warnings": "",
+                "CommandName": "CreatePatch",
+                "Arguments": "",
+                "TaskList": "",
+                "InactiveTaskList": "",
+                "State": "Out-of-date",
+                "Errors": "",
+                "_name_": "Enclose Fluid Regions (Capping)"
+            },
+            "TaskObject:TaskObject10": {
+                "TaskType": "Compound Child",
+                "ObjectPath": "",
+                "Warnings": "",
+                "CommandName": "BodyOfInfluence",
+                "Arguments": {
+                    "AddChild": "yes",
+                    "BOIControlName": "wing_surface",
+                    "BOIExecution": "Local Face Size",
+                    "BOIFaceLabelList": [
+                        "wing_surface"
+                    ],
+                    "BOIFaceZoneList": "__________None",
+                    "BOIGrowthRate": "1.2",
+                    "BOIMaxSize": "112.5",
+                    "BOIMinSize": "0.439453125",
+                    "BOISize": "4",
+                    "BOIZoneorLabel": "label"
+                },
+                "TaskList": "",
+                "InactiveTaskList": "",
+                "State": "Out-of-date",
+                "Errors": "",
+                "_name_": "wing_surface"
             },
             "TaskObject:TaskObject9": {
                 "_name_": "Create Volume Mesh",
@@ -221,6 +305,31 @@
                 "ObjectPath": "",
                 "TaskType": "Simple"
             },
+            "TaskObject:TaskObject13": {
+                "TaskType": "Compound Child",
+                "ObjectPath": "",
+                "Warnings": "",
+                "CommandName": "BodyOfInfluence",
+                "Arguments": {
+                    "AddChild": "yes",
+                    "BOIControlName": "refinement2",
+                    "BOIExecution": "Body Of Influence",
+                    "BOIFaceLabelList": "__________None",
+                    "BOIFaceZoneList": [
+                        "geom-refinement2"
+                    ],
+                    "BOIGrowthRate": "1.2",
+                    "BOIMaxSize": "112.5",
+                    "BOIMinSize": "0.439453125",
+                    "BOISize": "12",
+                    "BOIZoneorLabel": "zone"
+                },
+                "TaskList": "",
+                "InactiveTaskList": "",
+                "State": "Out-of-date",
+                "Errors": "",
+                "_name_": "refinement2"
+            },
             "TaskObject:TaskObject15": {
                 "_name_": "Improve Surface Mesh",
                 "Errors": "",
@@ -244,11 +353,10 @@
                 "TaskType": "Simple"
             },
             "TaskObject:TaskObject3": {
-                "_name_": "Create Surface Mesh",
-                "Errors": "",
-                "State": "Out-of-date",
-                "InactiveTaskList": "",
-                "TaskList": "",
+                "TaskType": "Simple",
+                "ObjectPath": "",
+                "Warnings": "__________None",
+                "CommandName": "ImportSurfaceMesh",
                 "Arguments": {
                     "AppendMesh": "false",
                     "CADFacetingControls": {
@@ -288,6 +396,7 @@
                     "ImportType": "Single File",
                     "LengthUnit": "mm",
                     "OriginalZones": [
+                        "solid",
                         "inlet",
                         "outlet",
                         "top",
@@ -316,21 +425,21 @@
                     },
                     "TesselationMethod": "CFD Surface Mesh"
                 },
-                "CommandName": "ImportSurfaceMesh",
-                "Warnings": "",
-                "ObjectPath": "",
-                "TaskType": "Simple"
+                "TaskList": "",
+                "InactiveTaskList": "",
+                "State": "Out-of-date",
+                "Errors": "",
+                "_name_": "Create Surface Mesh"
             },
             "TaskObject:TaskObject1": {
-                "_name_": "Import Geometry",
-                "Errors": "",
-                "State": "Out-of-date",
-                "InactiveTaskList": "",
-                "TaskList": "",
+                "TaskType": "Simple",
+                "ObjectPath": "",
+                "Warnings": "",
+                "CommandName": "ImportCadFaceting",
                 "Arguments": {
                     "AppendMesh": "false",
                     "Directory": "__________None",
-                    "FileName": "C:\/Users\/Frankie Hui\/openfoam\/fluent\/PCase4\/PCase4.agdb",
+                    "FileName": "C:\/Users\/Frankie Hui\/openfoam\/fluent\/PCase6\/PCase6.agdb",
                     "ImportCadPreferences": {
                         "CISeparation": "region",
                         "CISeparationAngle": "40",
@@ -342,116 +451,24 @@
                     "LengthUnit": "mm",
                     "Pattern": "__________None"
                 },
-                "CommandName": "ImportCadFaceting",
-                "Warnings": "",
-                "ObjectPath": "",
-                "TaskType": "Simple"
-            },
-            "TaskObject:TaskObject16": {
-                "TaskType": "Compound Child",
-                "ObjectPath": "",
-                "Warnings": "",
-                "CommandName": "BodyOfInfluence",
-                "Arguments": {
-                    "AddChild": "yes",
-                    "BOIControlName": "wing_tip",
-                    "BOIExecution": "Local Face Size",
-                    "BOIFaceLabelList": [
-                        "wing_end",
-                        "wing_tip"
-                    ],
-                    "BOIFaceZoneList": "__________None",
-                    "BOIGrowthRate": "1.2",
-                    "BOIMaxSize": "112.5",
-                    "BOIMinSize": "0.439453125",
-                    "BOISize": "2",
-                    "BOIZoneorLabel": "label"
-                },
                 "TaskList": "",
                 "InactiveTaskList": "",
                 "State": "Out-of-date",
                 "Errors": "",
-                "_name_": "wing_tip"
+                "_name_": "Import Geometry"
             },
-            "TaskObject:TaskObject8": {
-                "TaskType": "Simple",
-                "ObjectPath": "",
-                "Warnings": "",
-                "CommandName": "UpdateRegion",
-                "Arguments": {
-                    "MeshObject": "",
-                    "OldRegionNameList": "__________None",
-                    "OldRegionTypeList": "__________None",
-                    "RegionInternalTypes": "__________None",
-                    "RegionInternals": "__________None",
-                    "RegionNameList": "__________None",
-                    "RegionTypeList": "__________None"
-                },
-                "TaskList": "",
-                "InactiveTaskList": "",
-                "State": "Out-of-date",
-                "Errors": "",
-                "_name_": "Update Regions"
-            },
-            "TaskObject:TaskObject10": {
-                "TaskType": "Compound Child",
-                "ObjectPath": "",
-                "Warnings": "",
-                "CommandName": "BodyOfInfluence",
-                "Arguments": {
-                    "AddChild": "yes",
-                    "BOIControlName": "wing_surface",
-                    "BOIExecution": "Local Face Size",
-                    "BOIFaceLabelList": [
-                        "wing_surface"
-                    ],
-                    "BOIFaceZoneList": "__________None",
-                    "BOIGrowthRate": "1.2",
-                    "BOIMaxSize": "112.5",
-                    "BOIMinSize": "0.439453125",
-                    "BOISize": "4",
-                    "BOIZoneorLabel": "label"
-                },
-                "TaskList": "",
-                "InactiveTaskList": "",
-                "State": "Out-of-date",
-                "Errors": "",
-                "_name_": "wing_surface"
-            },
-            "TaskObject:TaskObject4": {
-                "TaskType": "Conditional",
-                "ObjectPath": "",
-                "Warnings": "",
-                "CommandName": "GeometrySetup",
-                "Arguments": {
-                    "CappingRequired": "Yes",
-                    "SetupInternalTypes": "__________None",
-                    "SetupInternals": "__________None",
-                    "SetupType": "The geometry consists of only fluid regions with no voids",
-                    "WallToInternal": "No"
-                },
+            "Workflow": {
+                "CurrentTask": "__________None",
                 "TaskList": [
-                    "TaskObject6"
-                ],
-                "InactiveTaskList": [
-                    "TaskObject5",
-                    "TaskObject7"
-                ],
-                "State": "Out-of-date",
-                "Errors": "",
-                "_name_": "Describe Geometry"
-            },
-            "TaskObject:TaskObject5": {
-                "TaskType": "Compound",
-                "ObjectPath": "",
-                "Warnings": "",
-                "CommandName": "CreatePatch",
-                "Arguments": "",
-                "TaskList": "",
-                "InactiveTaskList": "",
-                "State": "Out-of-date",
-                "Errors": "",
-                "_name_": "Enclose Fluid Regions (Capping)"
+                    "TaskObject1",
+                    "TaskObject2",
+                    "TaskObject3",
+                    "TaskObject15",
+                    "TaskObject4",
+                    "TaskObject8",
+                    "TaskObject9",
+                    "TaskObject14"
+                ]
             }
         }
     },
