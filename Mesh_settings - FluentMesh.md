@@ -17,7 +17,7 @@ wake_refine / refinement1
 
 tight_refine_box / refinement2
 
-    min ( 0.1 -0.15  0.0);
+    min ( -0.1 -0.15  0.0);
     max ( 0.3  0.15  0.45);
 
 
