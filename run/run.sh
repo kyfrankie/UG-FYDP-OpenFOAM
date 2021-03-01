@@ -17,7 +17,7 @@
 #SBATCH --mail-type=end
 
 # Choose partition (queue), for example, partition "standard / general / himem"
-#SBATCH -p general
+#SBATCH -p himem
 
 # Use 1 nodes and 24 cores
 #SBATCH -N 1 -n 24
@@ -31,15 +31,15 @@ source /usr/local/setup/openfoam-4.1.sh
 # Go to the job submission directory and run your application
 cd template || exit
 
-AOA=("-AOA04" "-AOA16")
-list=("internalField  uniform (22.94397 1.60440 0.0 );" "internalField  uniform (22.10902 6.33966 0.0 );")
-liftDir=("liftDir           (-0.06976 0.99756 0.0 );" "liftDir           (-0.27564 0.96126 0.0 );")
-dragDir=("dragDir           (0.99756 0.06976 0.0 );" "dragDir           (0.96126 0.27564 0.0 );")
+#AOA=("-AOA04" "-AOA16")
+#list=("internalField  uniform (22.94397 1.60440 0.0 );" "internalField  uniform (22.10902 6.33966 0.0 );")
+#liftDir=("liftDir           (-0.06976 0.99756 0.0 );" "liftDir           (-0.27564 0.96126 0.0 );")
+#dragDir=("dragDir           (0.99756 0.06976 0.0 );" "dragDir           (0.96126 0.27564 0.0 );")
 
-#AOA=("-AOA02" "-AOA04" "-AOA06" "-AOA08" "-AOA10" "-AOA12" "-AOA14" "-AOA16" "-AOA17" "-AOA18")
-#list=("internalField  uniform (22.98598902 0.80268842 0.0 );" "internalField  uniform (22.94397316 1.60439890 0.0 );" "internalField  uniform (22.87400359 2.40415466 0.0 );" "internalField  uniform (22.77616558 3.20098132 0.0 );" "internalField  uniform (22.65057832 3.99390809 0.0 );" "internalField  uniform (22.49739482 4.78196889 0.0 );" "internalField  uniform (22.31680170 5.56420360 0.0 );" "internalField  uniform (22.10901901 6.33965918 0.0 );" "internalField  uniform (21.99500939 6.72454921 0.0 );" "internalField  uniform (21.87429987 7.10739087 0.0 );")
-#liftDir=("liftDir           (-0.03489950 0.9993908 0.0 );" "liftDir           (-0.06975647 0.9975641 0.0 );" "liftDir           (-0.10452846 0.9945219 0.0 );" "liftDir           (-0.13917310 0.9902681 0.0 );" "liftDir           (-0.17364818 0.9848078 0.0 );" "liftDir           (-0.20791169 0.9781476 0.0 );" "liftDir           (-0.24192190 0.9702957 0.0 );" "liftDir           (-0.27563736 0.9612617 0.0 );" "liftDir           (-0.29237170 0.9563048 0.0 );" "liftDir           (-0.30901699 0.9510565 0.0 );")
-#dragDir=("dragDir           (0.9993908 0.03489950 0.0 );" "dragDir           (0.9975641 0.06975647 0.0 );" "dragDir           (0.9945219 0.10452846 0.0 );" "dragDir           (0.9902681 0.13917310 0.0 );" "dragDir           (0.9848078 0.17364818 0.0 );" "dragDir           (0.9781476 0.20791169 0.0 );" "dragDir           (0.9702957 0.24192190 0.0 );" "dragDir           (0.9612617 0.27563736 0.0 );" "dragDir           (0.9563048 0.29237170 0.0 );" "dragDir           (0.9510565 0.30901699 0.0 );")
+AOA=("-AOA02" "-AOA04" "-AOA06" "-AOA08" "-AOA10" "-AOA12" "-AOA14" "-AOA16" "-AOA17" "-AOA18")
+list=("internalField  uniform (22.98598902 0.80268842 0.0 );" "internalField  uniform (22.94397316 1.60439890 0.0 );" "internalField  uniform (22.87400359 2.40415466 0.0 );" "internalField  uniform (22.77616558 3.20098132 0.0 );" "internalField  uniform (22.65057832 3.99390809 0.0 );" "internalField  uniform (22.49739482 4.78196889 0.0 );" "internalField  uniform (22.31680170 5.56420360 0.0 );" "internalField  uniform (22.10901901 6.33965918 0.0 );" "internalField  uniform (21.99500939 6.72454921 0.0 );" "internalField  uniform (21.87429987 7.10739087 0.0 );")
+liftDir=("liftDir           (-0.03489950 0.9993908 0.0 );" "liftDir           (-0.06975647 0.9975641 0.0 );" "liftDir           (-0.10452846 0.9945219 0.0 );" "liftDir           (-0.13917310 0.9902681 0.0 );" "liftDir           (-0.17364818 0.9848078 0.0 );" "liftDir           (-0.20791169 0.9781476 0.0 );" "liftDir           (-0.24192190 0.9702957 0.0 );" "liftDir           (-0.27563736 0.9612617 0.0 );" "liftDir           (-0.29237170 0.9563048 0.0 );" "liftDir           (-0.30901699 0.9510565 0.0 );")
+dragDir=("dragDir           (0.9993908 0.03489950 0.0 );" "dragDir           (0.9975641 0.06975647 0.0 );" "dragDir           (0.9945219 0.10452846 0.0 );" "dragDir           (0.9902681 0.13917310 0.0 );" "dragDir           (0.9848078 0.17364818 0.0 );" "dragDir           (0.9781476 0.20791169 0.0 );" "dragDir           (0.9702957 0.24192190 0.0 );" "dragDir           (0.9612617 0.27563736 0.0 );" "dragDir           (0.9563048 0.29237170 0.0 );" "dragDir           (0.9510565 0.30901699 0.0 );")
 
 
 for file in constant/mesh/*.msh
@@ -77,7 +77,7 @@ for file in constant/mesh/*.msh
       decomposePar 2>&1 | tee -a logs/solver/decomposeSolver.log
       echo "RUN: pimpleFoam"
       mpirun -np 24 pimpleFoam -parallel  2>&1 | tee -a logs/solver/pimpleFoam.log
-      mpirun -np 24 pimpleFoam -parallel -postProcess -funcs "(yPlus forceCoefficient)" -latestTime 2>&1 | tee -a logs/solver/postProcess.log
+      mpirun -np 24 pimpleFoam -parallel -postProcess -funcs "(yPlus forceCoefficient CourantNo wallShearStress)" -latestTime 2>&1 | tee -a logs/solver/postProcess.log
       echo "RUN: reconstructPar"
       reconstructPar 2>&1 | tee -a logs/solver/reconstructPar.log
       rm -r processor*
