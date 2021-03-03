@@ -1,0 +1,22 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     |
+    \\  /    A nd           | Web:      www.OpenFOAM.org
+     \\/     M anipulation  |
+-------------------------------------------------------------------------------
+Description
+    Calculates the surface integral of one or more fields on a patch.
+\*---------------------------------------------------------------------------*/
+
+type                surfaceFieldValue;
+libs                ("libfieldFunctionObjects.so");
+log                 yes;
+writeFields         true;
+surfaceFormat       raw;
+regionType          patch;
+name                ( wall );
+operation           none;
+fields              ( p U );
+
+// ************************************************************************* //
