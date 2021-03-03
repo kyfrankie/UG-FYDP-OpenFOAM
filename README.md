@@ -49,72 +49,17 @@ These define the AOAs, flow velocity, lift/drag direction. Copy the parameters f
     dragDir=()
 
 # Mesh
-## [BlockMesh](run/template/system/blockMeshDict)
-Defines the flow field. Vertices defines the 8 rectangle corners `(x,y,z)`. Blocks defines the rectangle by joining the 8 vertices `hex (0 1 2 3 4 5 6 7)` and divides into smaller cube with size of 0.1m which is calculated to be `... (4.5/0.1 3/0.1 1.5/0.1) simpleGrading ...` to ensure the length of the cube is equal.
-  
-    vertices
-    (
-        (-1.5 -1.5 0)
-        ( 3.0 -1.5 0)
-        ( 3.0  1.5 0)
-        (-1.5  1.5 0)
-        (-1.5 -1.5 1.5)
-        ( 3.0 -1.5 1.5)
-        ( 3.0  1.5 1.5)
-        (-1.5  1.5 1.5)
-    );
-    blocks
-    (
-        hex (0 1 2 3 4 5 6 7) (45 30 15) simpleGrading (1 1 1)
-    );
+## [FluentMeshing](fluent)
+The geometry is generated with ANSYS Design Modeler. You may open the file [Mesh.wbpj](fluent/Mesh.wbpj) with ANSYS workbench. Block B is for tipped case while Block C is for normal wing. Then, the geometry file .agdb should be exported. 
 
-## [SnappyHexMesh](run/template/system/snappyHexMeshDict)
-Defines the mesh by providing a STL file of the model. `refinementBox` defines the volume of the general refinement region `(x y z)`.
+After that, inside fluent (with fluent meshing), open the template .wft. Import the geometry .agdb file and start the meshing process following the steps. The important setting are defined below:
 
-    geometry
-    {
-        Wing.stl
-        {
-            type    triSurfaceMesh;
-        }
-        refinementBoxA
-        {
-            type searchableBox;
-            min (-0.5 -0.9 0.0);
-            max ( 3.0  0.9 1.0);
-        }
-    };
+### [Pcase4]
+|Date|wing_surface|wing_edge|wing_tip|refinement_wake/1|refinement_near/2|refinement_te|refinement_tip|surfaceMesh min|layer first height|number of layers|Remarks|
+|---|---|---|---|---|---|---|---|---|---|---|---|
+|03MAR|4|2|2|25|8|6|5|1|0.6|12|no results yet|
+|     | | | |  | | | | |   |  | | 
 
-`refinementsurfaces` defines the refinement at the surface of the wing geometry. `(min max)` defines the minimum and maximum refinement level based on the `resolveFeatureAngle`. 
-
-`refinementRegions` define the refinement within the region as `levels ((1E15 R))` where R present the refinement level wanted.
-
-    refinementSurfaces
-    {
-        Wing.stl
-        {
-            level (6 6);
-        }
-    }
-    refinementRegions
-    {
-        refinementBoxA
-        {
-            mode inside;
-            levels ((1E15 2));
-        }
-    }
-`layers` define the layer addition parameters. `nSurfaceLayers` defines the number of layer to be added (suggested to be ~6). `expansionRatio` defines the expansion of layer thickness while `firstLayerThickness` defines the thickness of the first layer. For k-omega SST model, the `firstLayerThickness` has to be set such that y+ ~= 1 referencing a [y+calculator](https://www.pointwise.com/yplus/).
-
-    layers
-    {
-        Wing.stl
-        {
-            nSurfaceLayers 6;
-        }
-    }
-    expansionRatio 1.3;
-    firstLayerThickness 0.00005;
 
 # Solver
 ## [controlDict](run/template/system/controlDict)
