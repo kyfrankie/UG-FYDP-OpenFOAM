@@ -57,7 +57,8 @@ After that, inside fluent (with fluent meshing), open the template .wft. Import 
 ### [Pcase4]
 |Date|wing_surface|wing_edge|wing_tip|refinement_wake/1|refinement_near/2|refinement_te|refinement_tip|surfaceMesh min|layer first height|number of layers|Remarks|
 |---|---|---|---|---|---|---|---|---|---|---|---|
-|03MAR|4|2|2|25|8|6|5|1|0.6|12|no results yet|
+|03MAR|4|2|2|25|8|6|4|1|0.6|12|can be improved|
+|05MAR|4|1.5|0.5|30|7|6|3|0.5|0.5+0.2|30|no results yet|
 |     | | | |  | | | | |   |  | | 
 
 
