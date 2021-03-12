@@ -19,8 +19,10 @@ solvers
 {
     p
     {
-        solver           GAMG;
-        smoother         GaussSeidel;
+        //solver           GAMG;
+        //smoother         GaussSeidel;
+        solver           PBiCGStab;
+        preconditioner   DIC;
         tolerance        1e-06;
         relTol           0.01;
 
@@ -34,8 +36,10 @@ solvers
 
     "(U|k|omega)"
     {
-        solver          smoothSolver;
-        smoother        symGaussSeidel;
+        //solver          smoothSolver;
+        //smoother        symGaussSeidel;
+        solver          PBiCGStab;
+        preconditioner  DILU;
         tolerance       1e-08;
         relTol          0.01;
     }
@@ -51,16 +55,7 @@ PIMPLE
 {
     nOuterCorrectors 1;
     nCorrectors     2;
-    nNonOrthogonalCorrectors 2;
-
-    residualControl
-    {
-        p
-        {
-            tolerance  1e-05;
-            relTol     0;
-        }
-     }
+    nNonOrthogonalCorrectors 3;
 }
 
 relaxationFactors

@@ -6,6 +6,7 @@ Last updated on 01/2/2021.
 - 29/1: Update MatLab PostProcess code. 
 - 01/2: Added [y+](run/template/system/yPlus) postProcess utility.
 - 25/2: Added run.sh automation for fluent mesh.
+- 12/3: Update fluent meshing and openFoam setting for hpc3.
 
 Table of Contents
 - [Job submission](#job-submission)
@@ -60,7 +61,7 @@ After that, inside fluent (with fluent meshing), open the template .wft. Import 
 |---|---|---|---|---|---|---|---|
 |28FEB|4|2|12|2|0.4|8||
 |01MAR|3|1.5|12|1.5|0.4|12|Better mesh quality by increasing numbers of layers|
-||   |   |   |   |   |   |
+|12MAR|3|0.75 for TE, 1.5 for Wing tip, 1 for tip feather|12|6|0.04|15|Changed surface meshing setting to curvature and proximity. 
 
 # Solver
 ## [controlDict](run/template/system/controlDict)

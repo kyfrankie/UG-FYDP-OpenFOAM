@@ -1,0 +1,9 @@
+# encoding: utf-8
+# Release 19.2
+SetScriptVersion(Version="19.2.120")
+system1 = GetSystem(Name="Geom 1")
+geometry1 = system1.GetContainer(ComponentName="Geometry")
+geometry1.Edit()
+Save(Overwrite=True)
+geometry1.Exit()
+Save(Overwrite=True)

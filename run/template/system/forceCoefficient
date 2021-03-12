@@ -23,6 +23,6 @@ CofR              (0 0 0);    // Centre of rotation for moment calculations
 pitchAxis         (0 0 1);
 magUInf           23;
 lRef              0.135556;       // Chord length
-Aref              0.0421875;     // Platform area
+Aref              0.0421875;     // Platform area 0.0421875 0.04554504
 
 // ************************************************************************* //

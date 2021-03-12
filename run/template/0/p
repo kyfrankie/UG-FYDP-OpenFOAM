@@ -20,12 +20,12 @@ internalField   uniform 0;
 
 boundaryField
 {
-    "(inlet|top|bottom)"
+    "(inlet|bottom)"
     {
         type            zeroGradient;
     }
 
-    outlet
+    "(outlet|top)"
     {
         type            fixedValue;
         value           $internalField;

@@ -26,7 +26,6 @@ gradSchemes
 
 divSchemes
 {
-    default                         none;
     div(phi,U)                      Gauss linearUpwind grad(U);
     div(phi,k)                      Gauss limitedLinear 1;
     div(phi,omega)                  Gauss limitedLinear 1;
@@ -35,7 +34,7 @@ divSchemes
 
 laplacianSchemes
 {
-    default         Gauss linear limited 1.0;
+    default         Gauss linear limited corrected 0.5;
 }
 
 interpolationSchemes
@@ -45,7 +44,7 @@ interpolationSchemes
 
 snGradSchemes
 {
-    default         limited 1.0;
+    default         limited corrected 0.5;
 }
 
 wallDist
