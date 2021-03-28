@@ -1,0 +1,28 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     |
+    \\  /    A nd           | Web:      www.OpenFOAM.org
+     \\/     M anipulation  |
+-------------------------------------------------------------------------------
+Description
+    Calculates lift, drag and moment coefficients by summing forces on
+    specified patches for a case where the solver is incompressible (pressure
+    is kinematic, e.g. m^2/s^2).
+\*---------------------------------------------------------------------------*/
+
+type              forceCoeffs;
+libs              ("libforces.so");
+patches           (wall);
+log               yes;
+rho               rhoInf;      // Indicates incompressible
+rhoInf            10000;      // Redundant for incompressible
+liftDir           (-0.13917310 0.9902681 0.0 );
+dragDir           (0.9902681 0.13917310 0.0 );
+CofR              (0.025 0 0);    // Centre of rotation for moment calculations
+pitchAxis         (0 0 1);
+magUInf           8;
+lRef              0.1;       // Chord length
+Aref              0.02;     // Platform area 0.0421875 0.04554504
+
+// ************************************************************************* //
