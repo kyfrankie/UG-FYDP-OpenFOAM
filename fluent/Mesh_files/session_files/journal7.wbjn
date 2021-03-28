@@ -1,0 +1,11 @@
+# encoding: utf-8
+# Release 19.2
+SetScriptVersion(Version="19.2.120")
+system1 = GetSystem(Name="Geom 1")
+system1.Update(AllDependencies=True)
+system1.Copy(KeepConnections=True)
+system2 = GetSystem(Name="Geom 2")
+geometry1 = system2.GetContainer(ComponentName="Geometry")
+geometry1.Edit()
+Save(Overwrite=True)
+Save(Overwrite=True)
