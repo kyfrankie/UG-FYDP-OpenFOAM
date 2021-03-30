@@ -23,7 +23,7 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         0.3;
+endTime         0.4;
 
 deltaT          1e-6;
 
@@ -47,8 +47,7 @@ runTimeModifiable true;
 
 adjustTimeStep  yes;
 
-maxCo           2.0;
-maxDeltaT       1e-5;
+maxCo           5.0;
 
 functions
 {

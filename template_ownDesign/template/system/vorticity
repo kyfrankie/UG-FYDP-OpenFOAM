@@ -1,19 +1,18 @@
-
 /*--------------------------------*- C++ -*----------------------------------*\
   =========                 |
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     |
-    \\  /    A nd           | Web:      www.OpenFOAM.org
+   \\    /   O peration     | Version:  v2012
+    \\  /    A nd           | Website:  www.openfoam.com
      \\/     M anipulation  |
 -------------------------------------------------------------------------------
 Description
-    Calculates the shear stress at wall patches, outputting the data as a
-    volVectorField.
+    Calculates the vorticity field, i.e. the curl of the velocity field.
+
 \*---------------------------------------------------------------------------*/
 
-type            wallShearStress;
+type            vorticity;
 libs            ("libfieldFunctionObjects.so");
 
-patches         (wall);
+field           U;
 
 // ************************************************************************* //
