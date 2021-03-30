@@ -1,6 +1,2 @@
-result/result/
-result/Archieve/
-.history/
-run/template/constant/polyMesh
-run/template/constant/mesh/*.msh
-run/template/*.foam
+pcase*
+.vscode

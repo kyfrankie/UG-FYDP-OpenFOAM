@@ -15,7 +15,7 @@ libs              ("libforces.so");
 log               yes;
 patches           ( wall );
 rho               rhoInf;
-rhoInf            1.191;
+rhoInf            100000;
 CofR              (0 0 0);
 pitchAxis         (0 0 1);
 

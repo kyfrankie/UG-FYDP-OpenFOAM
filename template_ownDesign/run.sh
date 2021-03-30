@@ -89,7 +89,7 @@ for file in ../mesh/*.msh
       decomposePar 2>&1 | tee -a logs/solver/decomposeSolver.log
       echo "RUN: pimpleFoam"
       mpirun -np 40 pimpleFoam -parallel  2>&1 | tee -a logs/solver/pimpleFoam.log
-      mpirun -np 40 pimpleFoam -parallel -postProcess -funcs "(yPlus forceCoefficient CourantNo wallShearStress)" 2>&1 | tee -a logs/solver/postProcess.log
+      mpirun -np 40 pimpleFoam -parallel -postProcess -funcs "(forceCoefficient yPlus CourantNo wallShearStress force Q vorticity)" 2>&1 | tee -a logs/solver/postProcess.log
       echo "RUN: reconstructPar"
       reconstructPar 2>&1 | tee -a logs/solver/reconstructPar.log
       rm -r processor*
@@ -98,7 +98,7 @@ for file in ../mesh/*.msh
       paraFoam -touch -builtin
       mv template.foam "$name${AOA[t]}".foam
       echo "RUN $t: zipping $name${AOA[t]}"
-      tar -cvf "../result/$name/$name${AOA[t]}.tar" .
+      tar -czvf "../result/$name/$name${AOA[t]}.gz" .
 
       echo "RUN: FINISH $file"
       t=$((t+1))
